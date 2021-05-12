@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <title>Guess The Flag</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <select name="lang" id="lang">
+          <option value="choose">Choose Language</option>
+          <option value="english">English</option>
+          <option value="espanol">Español</option>
+          <option value="srpski">Srpski latinica</a></option>
+          <option value="српски">Српски ћирилица</option>
+        </select>
+        <h1>Quess the Flag Quizz</h1>
+        <select name="choices" id="choices">
+          <option value="choose">Choose Continent</option>
+          <option value="europe">Europe</option>
+          <option value="asia">Asia</option>
+          <option value="africa">Africa</option>
+          <option value="n_s_america">North & South America</option>
+          <option value="australia_oceania">Australia & Oceania</option>
+          <option value="world">World</option>
+          <option value="bonus">Bonus</option>
+        </select>
+      </nav>
+      <!-- <h3>Check your knowledge with this fun game</h3> -->
+      <div class="flag-container">
+        <div class="flag">
+        </div>
+      </div>
+       <button class="btn">Start the Quizz</button> 
+       <div class="answers-grid">
+         <div class="answers">Australia</div>
+         <div class="answers">Serbia</div>
+         <div class="answers">Bosnia & Herzegovina</div>
+         <div class="answers">Spain</div>
+         <div class="score">
+           <p id="hits"><i class="far fa-thumbs-up"></i>00</p>
+           <p id="misses">00<i class="far fa-thumbs-down"></i></p>
+         </div>
+      </div> 
+      <div class="game-info-container">
+        <div class="game-info">
+          <p id="game-info-text">Wrong Answer ! The Correct Answer was Serbia !</p>
+        </div>
+      </div>
+      <div class="timer-buttons-container">
+        <p class="timer">00:00:00</p>
+        <button class="btn restart">Restart Level</button>
+        <button class="btn quit">Quit</button>
+      </div>
+      <div class="additional-info-container">
+        <p class="additional-info">Total Number of Flags in This Level is : <span class="total-flags-in-level">47</span> </p>
+      </div>
+    </div>
+          
+      
+    <!-- <audio id="start">
+      <source src="sounds/positive/330052__paulmorek__beep-05-positive.wav">
+    </audio>
+    <audio id="positive">
+      <source src="sounds/positive/528862__eponn__beep-4.wav">
+    </audio>
+    <audio id="negative">
+      <source src="sounds/negative/253886__themusicalnomad__negative-beeps.wav">
+    </audio>
+    <audio id="level-end">
+      <source src="sounds/positive/320775__rhodesmas__win-02.wav">
+    </audio> -->
+    
+  </body>
+</html>

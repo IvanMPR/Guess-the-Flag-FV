@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+
+:root {
+  --text-color: #333;
+  --border-color: #333;
+  --fields-background-color: #fff;
+  --box-shadows: box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.1);
+  --text-shadows: text-shadow: 2px 2px 5px rgba(50, 50, 50, 0.4);
+  --green-color: #5cb85c; 
+  --green-color-darker: #52a552;
+  --red-color: #d9534f; 
+  --red-color-darker: #c34a47; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: url(images/background-image.jpg) no-repeat center center/cover;
+  font-family: "Play", Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
+  line-height: 1;
+}
+
+html,
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, 0.7);
+  z-index: 1;
+}
+/* ********************************************** */
+/* ********************************************** */
+/* Title and options menu */
+
+.container {
+  margin: auto;
+  max-width: 80%;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+.navbar {
+  position: inherit;
+  text-align: center;
+  width: 100%;
+  height: 6vh;
+  padding-top: 1rem; 
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #428bca; */
+}
+
+.navbar h1 {
+  font-size: 4rem;
+  color: var(--text-color);
+  font-weight: 700;
+  /* text-shadow: 2px 2px 5px rgba(50, 50, 50, 0.4); */
+}
+  
+.navbar select {
+  font-family: "Play", Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  /* background: khaki; */
+}
+.navbar select:hover {
+  box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.1);
+  transition: box-shadow 0.15s ease-in;
+} 
+
+/* .navbar select option { */
+  /* background-color: indianred; */
+  /* display: inline-block; */
+  /* padding: 5rem; */
+/* } */
+/* .navbar select option:hover { */
+  /* background-color: indianred; */
+  /* display: inline-block; */
+  /* padding: 5rem; */
+/* } */
+  
+/* ******************************************** */
+/* ******************************************** */
+/* Flag container and the start button */
+h3 {
+  font-size: 2rem;
+}
+.flag-container {
+  position: relative;
+  width: 30.5rem;
+  height: 18.2rem;
+  background: var(--fields-background-color);
+  z-index: 2;
+  margin: 4rem auto 1rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-color);
+}
+
+.flag-container .flag {
+  width: 29.5rem;
+  height: 17.2rem;
+  background: url(images/empty.jpg) no-repeat center center/cover;
+}
+  
+.btn {
+  position: inherit;
+  z-index: 2;
+  width: 30.5rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  background-color: var(--green-color);
+  /* display: block; */
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: var(--green-color-darker);
+  box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.15);
+  transition: all 0.15s ease-in;
+}
+ 
+  
+/* ***************************************** */
+/* ***************************************** */
+/* Answers grid */
+  
+
+
+.answers-grid {
+  position: relative;
+  width: 100%;
+  margin:2rem auto 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: center;
+  row-gap: 5vh;
+  column-gap: 10vw;
+}
+
+.answers {
+  position: inherit;
+  z-index: 3;
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  width: 22rem;
+  height: 5rem;
+  background-color: var(--fields-background-color);
+  font-size: 2rem;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.answers:hover {
+  box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.15);
+  transition: box-shadow 0.15s ease-in;
+}
+
+.score {
+  width: 7vw;
+  height: auto;
+  background-color: var(--fields-background-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5rem 0;
+  border: 1px solid var(--border-color);
+  z-index: 5;
+  /* opacity: 0.99; */
+}
+
+.score p {
+  font-size: 1.5rem;
+  padding: 0.3rem 0;
+}
+
+.score p#hits {
+  border-top: 2px solid var(--green-color);
+  border-bottom: 2px solid var(--green-color);
+}
+.score p#misses {
+  border-top: 2px solid var(--red-color);
+  border-bottom: 2px solid var(--red-color);
+}
+/* *********************** */
+/* Font Awesome Icons */
+.score p#hits i {
+  margin-right: 1rem;
+  color:  	var(--green-color);
+}
+.score p#misses i {
+  margin-left: 1rem;
+  color:  	var(--red-color);
+}
+ 
+/* ***************************** */
+/* ***************************** */
+/* Game info part */
+.game-info-container {
+  position: inherit;
+  z-index: 5;
+  width: 100%;
+  height: 7vh;
+  background-color: var(--fields-background-color);
+  border: 1px solid var(--border-color);
+  margin: 3rem auto;
+  display: grid;
+  place-content: center;
+}
+
+.game-info {
+  position: inherit;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.game-info p {
+  color: var(--text-color);
+  font-size: 2.5rem;
+  padding: 0.2rem 0.5rem;
+}
+
+/* *********************************** *?
+/* Timer */
+.timer-buttons-container {
+  position: inherit;
+  width: 100%;
+  /* height: auto; */
+  z-index: 5;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timer  {
+  width: 7vw;
+  font-size: 1.5rem;
+  padding: 0.7rem 0;
+  background-color: var(--fields-background-color);
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+ 
+button.quit {
+  background-color: var(--red-color);
+  margin-top: 1rem;
+}  
+button.quit:hover {
+  background-color: var(--red-color-darker);
+}  
+/* ****************************************** */ 
+/* Additional-info container */
+ .additional-info-container {
+   margin: 2rem auto 0;
+   position: inherit;
+   width: 42%;
+   height: auto;
+   background-color: var(--fields-background-color);
+   z-index: 5;
+   text-align: center;
+   border: 1px solid var(--border-color);
+   
+ }
+ .additional-info {
+   font-size: 2rem;
+   padding: 0.5rem;
+ }
