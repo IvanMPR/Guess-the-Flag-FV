@@ -23,10 +23,16 @@ const additionalInfoContainer = document.querySelector(
 const totalFlagsInLevel = document.querySelector('.total-flags-in-level');
 ////////////////////////////////////////////////////////////////////
 /*** Audio elements***/
-const startSound = document.getElementById('start-sound');
-const trueAswerSound = document.getElementById('positive');
-const falseAswerSound = document.getElementById('negative');
-const levelEndSound = document.getElementById('level-end');
+const startSound = new Audio(
+  'sounds/positive/330052__paulmorek__beep-05-positive.wav'
+);
+const trueAswerSound = new Audio('sounds/positive/528862__eponn__beep-4.wav');
+const falseAswerSound = new Audio(
+  'sounds/negative/253886__themusicalnomad__negative-beeps.wav'
+);
+const levelEndSound = new Audio(
+  'sounds/positive/320775__rhodesmas__win-02.wav'
+);
 /////////////////////////////////////////////////////////////////////
 function checkSelection(element) {
   // console.log(element);
@@ -34,3 +40,7 @@ function checkSelection(element) {
   element.classList.add('hidden');
 }
 // checkSelection(additionalInfoContainer);
+
+// startBtn.addEventListener('click', () => {
+//   levelEndSound.play();
+// });
