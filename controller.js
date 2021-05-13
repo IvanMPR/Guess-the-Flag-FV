@@ -22,18 +22,21 @@ const time = document.querySelector('.time');
 const additionalInfoContainer = document.querySelector(
   '.additional-info-container'
 );
+const additionalInfo = document.querySelector('.additional-info');
 const totalFlagsInLevel = document.querySelector('.total-flags-in-level');
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
-function visibleConstants() {
+function makeVisibleOnStart() {
   restartLevelBtn.classList.remove('hidden');
   quitBtn.classList.remove('hidden');
   totalFlagsInLevel.classList.remove('hidden');
   time.classList.remove('hidden');
+  additionalInfo.classList.remove('hidden');
   restartLevelBtn.classList.add('visible');
   quitBtn.classList.add('visible');
   totalFlagsInLevel.classList.add('visible');
   time.classList.add('visible');
+  additionalInfo.classList.add('visible');
 }
 
 function clearFields() {
@@ -68,4 +71,4 @@ function init() {
 // checkSelection(additionalInfoContainer);
 
 startBtn.addEventListener('click', init);
-startBtn.addEventListener('click', visibleConstants);
+startBtn.addEventListener('click', makeVisibleOnStart);
