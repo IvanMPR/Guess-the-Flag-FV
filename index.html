@@ -9,7 +9,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
+    <script type="module" src="controller.js"></script>
     <title>Guess The Flag</title>
   </head>
   <body>
@@ -41,13 +41,13 @@
       </div>
        <button class="btn start">Start the Quizz</button> 
        <div class="answers-grid">
-         <div class="answers">Australia</div>
-         <div class="answers">Serbia</div>
-         <div class="answers">Bosnia & Herzegovina</div>
-         <div class="answers">Spain</div>
+         <div class="answers"><p class="choices">Australia</p></div>
+         <div class="answers"><p class="choices">Serbia</p></div>
+         <div class="answers"><p class="choices">Bosnia & Herzegovina</p></div>
+         <div class="answers"><p class="choices">Spain</p></div>
          <div class="score">
-           <p id="hits"><i class="far fa-thumbs-up"></i>00</p>
-           <p id="misses">00<i class="far fa-thumbs-down"></i></p>
+           <p id="hits" class=""><i class="far fa-thumbs-up"></i>00</p>
+           <p id="misses" class="">00<i class="far fa-thumbs-down"></i></p>
          </div>
       </div> 
       <div class="game-info-container">
@@ -55,13 +55,13 @@
           <p id="game-info-text">Wrong Answer ! The Correct Answer was Serbia !</p>
         </div>
       </div>
-      <div class="timer-buttons-container">
-        <p class="timer">00:00:00</p>
-        <button class="btn restart">Restart Level</button>
-        <button class="btn quit">Quit</button>
+      <div class="time-buttons-container">
+        <p class="time hidden">00:00:00</p>
+        <button class="btn restart hidden">Restart Level</button>
+        <button class="btn quit hidden">Quit</button>
       </div>
       <div class="additional-info-container">
-        <p class="additional-info">Total Number of Flags in This Level is : <span class="total-flags-in-level">47</span> </p>
+        <p class="additional-info">Total Number of Flags in This Level is : <span class="total-flags-in-level hidden">47</span> </p>
       </div>
     </div>
   </body>

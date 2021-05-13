@@ -46,7 +46,7 @@ body::before {
 
 .hidden {
   opacity: 0;
-  transition: all 0.25s ease-out;
+  /* transition: all 0.15s ease-out; */
 }
 
 .visible {
@@ -128,7 +128,7 @@ h3 {
 .flag {
   width: 29.5rem;
   height: 17.2rem;
-  background: url(images/empty.jpg) no-repeat center center/cover;
+  background: url(images/logo/logo.svg) no-repeat center center/cover;
 }
 
 .btn {
@@ -260,7 +260,7 @@ h3 {
 
 /* *********************************** *?
 /* Timer */
-.timer-buttons-container {
+.time-buttons-container {
   position: inherit;
   width: 100%;
   /* height: auto; */
@@ -272,7 +272,7 @@ h3 {
   justify-content: space-between;
 }
 
-.timer {
+.time {
   width: 7vw;
   font-size: 1.5rem;
   padding: 0.7rem 0;
