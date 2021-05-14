@@ -1,7 +1,11 @@
 // ******* Selections ******** //
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
+<<<<<<< HEAD
 import { startTimer } from './modules/model.js';
+=======
+
+>>>>>>> 2306fe7b1acc3c98aed76273beed0cbdcc6faf39
 ////////////////////////////////////////
 //*** Buttons ***//
 const startBtn = document.querySelector('.start');
@@ -58,8 +62,12 @@ function init() {
   clearFields();
   resetFlag();
   hideStartBtn();
+<<<<<<< HEAD
   playOnStartTone();
   // startTimer();
+=======
+  trueAnswerTone();
+>>>>>>> 2306fe7b1acc3c98aed76273beed0cbdcc6faf39
 }
 
 /////////////////////////////////////////////////////////////////////
