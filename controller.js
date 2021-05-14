@@ -59,7 +59,7 @@ function init() {
   resetFlag();
   hideStartBtn();
   playOnStartTone();
-  // startTimer();
+  startTimer();
 }
 
 /////////////////////////////////////////////////////////////////////
