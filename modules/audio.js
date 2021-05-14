@@ -6,16 +6,16 @@ export const playOnStartTone = function () {
   return tone.play();
 };
 export const trueAswerTone = function () {
-  const tone = new Audio('../sounds/positive/528862__eponn__beep-4.wav');
+  const tone = new Audio('sounds/positive/528862__eponn__beep-4.wav');
   return tone.play();
 };
 export const falseAswerTone = function () {
   const tone = new Audio(
-    '../sounds/negative/253886__themusicalnomad__negative-beeps.wav'
+    'sounds/negative/253886__themusicalnomad__negative-beeps.wav'
   );
   return tone.play();
 };
 export const playOnLevelEndTone = function () {
-  const tone = new Audio('../sounds/positive/320775__rhodesmas__win-02.wav');
+  const tone = new Audio('sounds/positive/320775__rhodesmas__win-02.wav');
   return tone.play();
 };
