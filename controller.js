@@ -1,7 +1,7 @@
 // ******* Selections ******** //
 //prettier-ignore
-import { playOnStartTone, trueAswerTone, falseAswerTone, playOnLevelEndTone } from './modules/audio.js';
-
+import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
+import { startTimer } from './modules/model.js';
 ////////////////////////////////////////
 //*** Buttons ***//
 const startBtn = document.querySelector('.start');
@@ -18,7 +18,7 @@ const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
 //////////////////////////////////////////////////////////
 const gameInfo = document.getElementById('game-info-text');
-const time = document.querySelector('.time');
+export const time = document.querySelector('.time');
 const additionalInfoContainer = document.querySelector(
   '.additional-info-container'
 );
@@ -59,6 +59,7 @@ function init() {
   resetFlag();
   hideStartBtn();
   playOnStartTone();
+  // startTimer();
 }
 
 /////////////////////////////////////////////////////////////////////
