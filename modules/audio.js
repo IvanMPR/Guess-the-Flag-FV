@@ -5,11 +5,11 @@ export const playOnStartTone = function () {
   );
   return tone.play();
 };
-export const trueAswerTone = function () {
+export const trueAnswerTone = function () {
   const tone = new Audio('sounds/positive/528862__eponn__beep-4.wav');
   return tone.play();
 };
-export const falseAswerTone = function () {
+export const falseAnswerTone = function () {
   const tone = new Audio(
     'sounds/negative/253886__themusicalnomad__negative-beeps.wav'
   );
