@@ -1,6 +1,6 @@
 // ******* Selections ******** //
 //prettier-ignore
-import { playOnStartTone, trueAswerTone, falseAswerTone, playOnLevelEndTone } from './modules/audio.js';
+import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 
 ////////////////////////////////////////
 //*** Buttons ***//
