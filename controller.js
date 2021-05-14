@@ -58,7 +58,7 @@ function init() {
   clearFields();
   resetFlag();
   hideStartBtn();
-  playOnStartTone();
+  trueAnswerTone();
 }
 
 /////////////////////////////////////////////////////////////////////
