@@ -1,7 +1,7 @@
 /*** Audio elements***/
 export const playOnStartTone = function () {
   const tone = new Audio(
-    '/sounds/positive/330052__paulmorek__beep-05-positive.wav'
+    'sounds/positive/330052__paulmorek__beep-05-positive.wav'
   );
   return tone.play();
 };
