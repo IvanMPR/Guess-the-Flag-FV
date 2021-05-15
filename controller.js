@@ -6,7 +6,7 @@ import { startTimer } from './modules/model.js';
 //*** Buttons ***//
 const startBtn = document.querySelector('.start');
 const restartLevelBtn = document.querySelector('.restart');
-const quitBtn = document.querySelector('.quit');
+export const quitBtn = document.querySelector('.quit');
 ///////////////////////////////////////////////////////
 const languageChoice = document.getElementById('language');
 const continentChoice = document.getElementById('continents');
@@ -38,6 +38,10 @@ function makeVisibleOnStart() {
   time.classList.add('visible');
   additionalInfo.classList.add('visible');
 }
+
+// function stopTimer() {
+//   clearInterval(startTimer);
+// }
 
 function clearFields() {
   gameInfo.textContent = '';
@@ -73,3 +77,4 @@ function init() {
 
 startBtn.addEventListener('click', init);
 startBtn.addEventListener('click', makeVisibleOnStart);
+// quitBtn.addEventListener('click', stopTimer);
