@@ -55,13 +55,13 @@ body::before {
 }
 
 .green-b-b {
-  border-top: var(--green-color) 2px solid;
-  border-bottom: var(--green-color) 2px solid;
+  border-top: var(--green-color) 2px solid !important;
+  border-bottom: var(--green-color) 2px solid !important;
 }
 
 .red-b-b {
-  border-top: var(--red-color) 2px solid;
-  border-bottom: var(--red-color) 2px solid;
+  border-top: var(--red-color) 2px solid !important;
+  border-bottom: var(--red-color) 2px solid !important;
 }
 
 /* ********************************************** */
@@ -218,16 +218,15 @@ h3 {
 
 .score p {
   font-size: 1.5rem;
-  padding: 0.3rem 0;
+  padding: 0.4rem 0;
 }
-
 .score p#hits {
-  border-top: 2px solid var(--green-color);
-  border-bottom: 2px solid var(--green-color);
+  border-top: 2px solid var(--fields-background-color);
+  border-bottom: 2px solid var(--fields-background-color);
 }
 .score p#misses {
-  border-top: 2px solid var(--red-color);
-  border-bottom: 2px solid var(--red-color);
+  border-top: 2px solid var(--fields-background-color);
+  border-bottom: 2px solid var(--fields-background-color);
 }
 /* *********************** */
 /* Font Awesome Icons */

@@ -42,6 +42,18 @@ function makeVisibleOnStart() {
 // function stopTimer() {
 //   clearInterval(startTimer);
 // }
+function greenThumbFlash() {
+  hits.classList.add('green-b-b');
+  setTimeout(() => {
+    hits.classList.remove('green-b-b');
+  }, 400);
+}
+function redThumbFlash() {
+  misses.classList.add('red-b-b');
+  setTimeout(() => {
+    misses.classList.remove('red-b-b');
+  }, 400);
+}
 
 function clearFields() {
   gameInfo.textContent = '';
@@ -56,6 +68,9 @@ function resetFlag() {
 }
 function hideStartBtn() {
   startBtn.classList.add('hidden');
+}
+function quitGame() {
+  location.reload();
 }
 
 function init() {
@@ -77,4 +92,5 @@ function init() {
 
 startBtn.addEventListener('click', init);
 startBtn.addEventListener('click', makeVisibleOnStart);
-// quitBtn.addEventListener('click', stopTimer);
+restartLevelBtn.addEventListener('click', greenThumbFlash);
+quitBtn.addEventListener('click', quitGame);
