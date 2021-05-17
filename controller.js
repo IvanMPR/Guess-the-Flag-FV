@@ -2,6 +2,7 @@
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 import { startTimer } from './modules/model.js';
+import { greenThumbFlash, redThumbFlash } from './modules/view.js';
 ////////////////////////////////////////
 //*** Buttons ***//
 const startBtn = document.querySelector('.start');
@@ -42,18 +43,6 @@ function makeVisibleOnStart() {
 // function stopTimer() {
 //   clearInterval(startTimer);
 // }
-function greenThumbFlash() {
-  hits.classList.add('green-b-b');
-  setTimeout(() => {
-    hits.classList.remove('green-b-b');
-  }, 400);
-}
-function redThumbFlash() {
-  misses.classList.add('red-b-b');
-  setTimeout(() => {
-    misses.classList.remove('red-b-b');
-  }, 400);
-}
 
 function clearFields() {
   gameInfo.textContent = '';
@@ -81,16 +70,34 @@ function init() {
   startTimer();
 }
 
-/////////////////////////////////////////////////////////////////////
-// Test selection and audio helper functions
-// function checkSelection(element) {
-//   // console.log(element);
-//   // element.forEach(div => div.classList.add('hidden'));
-//   element.classList.add('hidden');
-// }
-// checkSelection(additionalInfoContainer);
-
 startBtn.addEventListener('click', init);
 startBtn.addEventListener('click', makeVisibleOnStart);
 restartLevelBtn.addEventListener('click', greenThumbFlash);
 quitBtn.addEventListener('click', quitGame);
+
+class Continent {
+  constructor(countriesArray) {
+    this.countriesArray = countriesArray;
+  }
+  //Knuth - Yates shuffle-shuffles states array every run(note! once would be enough)
+  shuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+}
+/////////////////////////////////////////////////////////////////////
