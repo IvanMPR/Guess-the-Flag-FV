@@ -3,14 +3,15 @@
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 import { startTimer } from './modules/model.js';
 import { greenThumbFlash, redThumbFlash } from './modules/view.js';
+
 ////////////////////////////////////////
 //*** Buttons ***//
 const startBtn = document.querySelector('.start');
 const restartLevelBtn = document.querySelector('.restart');
 export const quitBtn = document.querySelector('.quit');
 ///////////////////////////////////////////////////////
-const languageChoice = document.getElementById('language');
-const continentChoice = document.getElementById('continents');
+const languageChoice = document.getElementById('language').value;
+const continentChoice = document.getElementById('continents').value;
 const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 const answersGrid = document.querySelector('.answers-grid');
@@ -70,14 +71,9 @@ function init() {
   startTimer();
 }
 
-startBtn.addEventListener('click', init);
-startBtn.addEventListener('click', makeVisibleOnStart);
-restartLevelBtn.addEventListener('click', greenThumbFlash);
-quitBtn.addEventListener('click', quitGame);
-
 class Continent {
-  constructor(countriesArray) {
-    this.countriesArray = countriesArray;
+  constructor(array) {
+    this.array = array;
   }
   //Knuth - Yates shuffle-shuffles states array every run(note! once would be enough)
   shuffle(array) {
@@ -100,4 +96,31 @@ class Continent {
     return array;
   }
 }
+
+//prettier-ignore
+const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus"]);
+//prettier-ignore
+const asia = new Continent(["afghanistan", "armenia", "azerbaijan", "bahrain", "bangladesh", "bhutan", "brunei", "cambodia", "china"]);
+//prettier-ignore
+const africa = new Continent(["algeria", "angola ", "benin", "botswana", "burkina_faso", "burundi", "cape_verde"]);
+//prettier-ignore
+const america = new Continent(["antigua_and_barbuda", "argentina", "bahamas", "barbados", "belize", "bolivia"]);
+//prettier-ignore
+const australia = new Continent(["australia", "fiji", "kiribati", "marshall_islands", "micronesia", "nauru", "new_zealand", "palau"]);
+//prettier-ignore
+const world = new Continent(["argentina", "bahamas", "barbados", "belize", "bolivia", "brazil", "canada", "chile", "colombia", "costa_rica"]);
+//prettier-ignore
+const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney", "altai_republic", "american_samoa", "anguilla", "antarctica"]);
+
+console.log(asia.shuffle(asia.array));
+console.log(europe.shuffle(europe.array));
+console.log(world.array);
+console.log(continentChoice);
+console.log(languageChoice);
 /////////////////////////////////////////////////////////////////////
+
+startBtn.addEventListener('click', init);
+startBtn.addEventListener('click', makeVisibleOnStart);
+restartLevelBtn.addEventListener('click', greenThumbFlash);
+
+quitBtn.addEventListener('click', quitGame);
