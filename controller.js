@@ -10,8 +10,8 @@ const startBtn = document.querySelector('.start');
 const restartLevelBtn = document.querySelector('.restart');
 export const quitBtn = document.querySelector('.quit');
 ///////////////////////////////////////////////////////
-const languageChoice = document.getElementById('language').value;
-const continentChoice = document.getElementById('continents').value;
+const languageChoice = document.getElementById('language');
+const continentChoice = document.getElementById('continents');
 const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 const answersGrid = document.querySelector('.answers-grid');
@@ -28,6 +28,8 @@ const additionalInfo = document.querySelector('.additional-info');
 const totalFlagsInLevel = document.querySelector('.total-flags-in-level');
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
+init();
+
 function makeVisibleOnStart() {
   restartLevelBtn.classList.remove('hidden');
   quitBtn.classList.remove('hidden');
@@ -56,9 +58,25 @@ function resetFlag() {
   const path = 'url(images/empty.jpg)';
   flag.style.backgroundImage = path;
 }
+function disableBtnWhenHidden(el) {
+  if (el.classList.contains('hidden')) {
+    el.disabled = true;
+    el.style.cursor = 'default';
+  }
+}
+
+function enableBtnWhenVisible(el) {
+  if (el.classList.contains('visible')) {
+    el.disabled = false;
+    el.style.cursor = 'pointer';
+  }
+}
+
 function hideStartBtn() {
   startBtn.classList.add('hidden');
+  disableBtnWhenHidden(startBtn);
 }
+
 function quitGame() {
   location.reload();
 }
@@ -66,16 +84,17 @@ function quitGame() {
 function init() {
   clearFields();
   resetFlag();
-  hideStartBtn();
-  playOnStartTone();
-  startTimer();
+  disableBtnWhenHidden(restartLevelBtn);
+  disableBtnWhenHidden(quitBtn);
 }
 
 class Continent {
-  constructor(array) {
-    this.array = array;
+  constructor(statesArray) {
+    this.statesArray = statesArray;
+    this.statesArrayClone = statesArray.slice();
+    this.initialLength = statesArray.length;
   }
-  //Knuth - Yates shuffle-shuffles states array every run(note! once would be enough)
+
   shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
@@ -92,9 +111,28 @@ class Continent {
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-
+    console.log(array);
     return array;
   }
+
+  randomState() {
+    const pickedState = this.statesArray[this.statesArray.length - 1];
+    const path = `url(images/flags/${continentChoice.value}/${pickedState}.jpg)`;
+    flag.style.backgroundImage = path;
+
+    return pickedState;
+  }
+}
+
+function startGame() {
+  playOnStartTone();
+  makeVisibleOnStart();
+  hideStartBtn();
+  startTimer();
+  enableBtnWhenVisible(restartLevelBtn);
+  enableBtnWhenVisible(quitBtn);
+  mainHub();
+  gameFlow(mainHub());
 }
 
 //prettier-ignore
@@ -102,7 +140,7 @@ const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerb
 //prettier-ignore
 const asia = new Continent(["afghanistan", "armenia", "azerbaijan", "bahrain", "bangladesh", "bhutan", "brunei", "cambodia", "china"]);
 //prettier-ignore
-const africa = new Continent(["algeria", "angola ", "benin", "botswana", "burkina_faso", "burundi", "cape_verde"]);
+const africa = new Continent(["algeria", "angola", "benin", "botswana", "burkina_faso", "burundi", "cape_verde"]);
 //prettier-ignore
 const america = new Continent(["antigua_and_barbuda", "argentina", "bahamas", "barbados", "belize", "bolivia"]);
 //prettier-ignore
@@ -112,15 +150,39 @@ const world = new Continent(["argentina", "bahamas", "barbados", "belize", "boli
 //prettier-ignore
 const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney", "altai_republic", "american_samoa", "anguilla", "antarctica"]);
 
-console.log(asia.shuffle(asia.array));
-console.log(europe.shuffle(europe.array));
-console.log(world.array);
-console.log(continentChoice);
-console.log(languageChoice);
+/////////////////////////////////////////////////////////////////
+// console.log(bonus.statesArrayClone);
+////////////////////////////////////////////////////////////////
+const fromStringToVar = {
+  europe: europe,
+  asia: asia,
+  africa: africa,
+  america: america,
+  australia: australia,
+  world: world,
+  bonus: bonus,
+};
+
+// const listenForContinentChange = function () {
+//   console.log(continentChoice.value);
+//   return continentChoice.value;
+// };
+// console.log(listenForContinentChange());
+// const object = listenForContinentChange();
+// console.log(object);
+
+function mainHub() {
+  return fromStringToVar[continentChoice.value];
+}
+function gameFlow(object) {
+  object.shuffle(object.statesArray);
+  object.randomState();
+}
+
 /////////////////////////////////////////////////////////////////////
 
-startBtn.addEventListener('click', init);
-startBtn.addEventListener('click', makeVisibleOnStart);
+startBtn.addEventListener('click', startGame);
+// continentChoice.addEventListener('change', listenForContinentChange);
 restartLevelBtn.addEventListener('click', greenThumbFlash);
-
+continentChoice.addEventListener('change', mainHub);
 quitBtn.addEventListener('click', quitGame);
