@@ -27,6 +27,7 @@ const additionalInfoContainer = document.querySelector(
 const additionalInfo = document.querySelector('.additional-info');
 const totalFlagsInLevel = document.querySelector('.total-flags-in-level');
 ////////////////////////////////////////////////////////////////////
+const trueGuess = document.querySelector('.true');
 ////////////////////////////////////////////////////////////////////
 init();
 
@@ -52,6 +53,7 @@ function clearFields() {
   choices.forEach(choice => {
     choice.textContent = '';
     choice.classList.remove('true', 'false');
+    choice.closest('.answers').classList.remove('true', 'false');
   });
 }
 function resetFlag() {
@@ -70,6 +72,10 @@ function enableBtnWhenVisible(el) {
     el.disabled = false;
     el.style.cursor = 'pointer';
   }
+}
+
+function paintGreenOnTrue(el) {
+  el.style.bacgroundColor = '#5cb85c';
 }
 
 function hideStartBtn() {
@@ -127,6 +133,7 @@ class Continent {
     const randNum = Math.floor(Math.random() * choices.length);
     const randField = choices[randNum];
     randField.classList.add('true');
+    randField.closest('.answers').classList.add('true');
     randField.textContent = pickedState;
 
     return randField;
@@ -137,6 +144,17 @@ class Continent {
       if (field.textContent === '') {
         field.classList.add('false');
         field.textContent = this.statesArray[i];
+      }
+    });
+  }
+
+  trueAnswer() {
+    answersGrid.addEventListener('click', function (e) {
+      if (e.target.classList.contains('true')) {
+        console.log(e.target);
+        greenThumbFlash();
+        trueAnswerTone();
+        console.log('True');
       }
     });
   }
@@ -187,7 +205,6 @@ const fromStringToVar = {
 // };
 // console.log(listenForContinentChange());
 // const object = listenForContinentChange();
-// console.log(object);
 
 function mainHub() {
   return fromStringToVar[continentChoice.value];
@@ -196,12 +213,13 @@ function gameFlow(object) {
   object.shuffle(object.statesArray);
   object.displayAnswer(object.randomState());
   object.otherAnswers();
+  object.trueAnswer();
 }
-
+console.log(europe);
 /////////////////////////////////////////////////////////////////////
 
 startBtn.addEventListener('click', startGame);
 // continentChoice.addEventListener('change', listenForContinentChange);
-restartLevelBtn.addEventListener('click', greenThumbFlash);
+// restartLevelBtn.addEventListener('click', greenThumbFlash);
 continentChoice.addEventListener('change', mainHub);
 quitBtn.addEventListener('click', quitGame);
