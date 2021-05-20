@@ -158,6 +158,17 @@ class Continent {
       }
     });
   }
+
+  wrongAnswer() {
+    answersGrid.addEventListener('click', function (e) {
+      if (!e.target.classList.contains('true')) {
+        console.log(e.target);
+        redThumbFlash();
+        falseAnswerTone();
+        console.log('False');
+      }
+    });
+  }
 }
 
 function startGame() {
@@ -214,6 +225,7 @@ function gameFlow(object) {
   object.displayAnswer(object.randomState());
   object.otherAnswers();
   object.trueAnswer();
+  object.wrongAnswer();
 }
 console.log(europe);
 /////////////////////////////////////////////////////////////////////
