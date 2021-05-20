@@ -2,7 +2,8 @@
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 import { startTimer } from './modules/model.js';
-import { greenThumbFlash, redThumbFlash } from './modules/view.js';
+//prettier-ignore
+import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground} from './modules/view.js';
 
 ////////////////////////////////////////
 //*** Buttons ***//
@@ -19,7 +20,7 @@ const choices = document.querySelectorAll('.choices');
 const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
 //////////////////////////////////////////////////////////
-const gameInfo = document.getElementById('game-info-text');
+export const gameInfo = document.getElementById('game-info-text');
 export const time = document.querySelector('.time');
 const additionalInfoContainer = document.querySelector(
   '.additional-info-container'
@@ -27,8 +28,8 @@ const additionalInfoContainer = document.querySelector(
 const additionalInfo = document.querySelector('.additional-info');
 const totalFlagsInLevel = document.querySelector('.total-flags-in-level');
 ////////////////////////////////////////////////////////////////////
-const trueGuess = document.querySelector('.true');
 ////////////////////////////////////////////////////////////////////
+
 init();
 
 function makeVisibleOnStart() {
@@ -56,10 +57,12 @@ function clearFields() {
     choice.closest('.answers').classList.remove('true', 'false');
   });
 }
+
 function resetFlag() {
   const path = 'url(images/empty.jpg)';
   flag.style.backgroundImage = path;
 }
+
 function disableBtnWhenHidden(el) {
   if (el.classList.contains('hidden')) {
     el.disabled = true;
@@ -72,10 +75,6 @@ function enableBtnWhenVisible(el) {
     el.disabled = false;
     el.style.cursor = 'pointer';
   }
-}
-
-function paintGreenOnTrue(el) {
-  el.style.bacgroundColor = '#5cb85c';
 }
 
 function hideStartBtn() {
@@ -151,10 +150,10 @@ class Continent {
   trueAnswer() {
     answersGrid.addEventListener('click', function (e) {
       if (e.target.classList.contains('true')) {
-        console.log(e.target);
         greenThumbFlash();
         trueAnswerTone();
-        console.log('True');
+        cheerMessage();
+        paintGreenBackground(e.target.closest('.answers'));
       }
     });
   }
@@ -162,10 +161,9 @@ class Continent {
   wrongAnswer() {
     answersGrid.addEventListener('click', function (e) {
       if (!e.target.classList.contains('true')) {
-        console.log(e.target);
         redThumbFlash();
         falseAnswerTone();
-        console.log('False');
+        paintRedBackground(e.target.closest('.answers'));
       }
     });
   }
