@@ -122,6 +122,24 @@ class Continent {
 
     return pickedState;
   }
+
+  displayAnswer(pickedState) {
+    const randNum = Math.floor(Math.random() * choices.length);
+    const randField = choices[randNum];
+    randField.classList.add('true');
+    randField.textContent = pickedState;
+
+    return randField;
+  }
+
+  otherAnswers() {
+    choices.forEach((field, i) => {
+      if (field.textContent === '') {
+        field.classList.add('false');
+        field.textContent = this.statesArray[i];
+      }
+    });
+  }
 }
 
 function startGame() {
@@ -176,7 +194,8 @@ function mainHub() {
 }
 function gameFlow(object) {
   object.shuffle(object.statesArray);
-  object.randomState();
+  object.displayAnswer(object.randomState());
+  object.otherAnswers();
 }
 
 /////////////////////////////////////////////////////////////////////
