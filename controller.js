@@ -26,7 +26,9 @@ const additionalInfoContainer = document.querySelector(
   '.additional-info-container'
 );
 const additionalInfo = document.querySelector('.additional-info');
-const totalFlagsInLevel = document.querySelector('.total-flags-in-level');
+export const totalFlagsInLevel = document.querySelector(
+  '.total-flags-in-level'
+);
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
@@ -94,6 +96,8 @@ function init() {
 }
 
 class Continent {
+  counterPos = 0;
+  counterNeg = 0;
   constructor(statesArray) {
     this.statesArray = statesArray;
     this.statesArrayClone = statesArray.slice();
@@ -167,17 +171,10 @@ class Continent {
       }
     });
   }
-}
 
-function startGame() {
-  playOnStartTone();
-  makeVisibleOnStart();
-  hideStartBtn();
-  startTimer();
-  enableBtnWhenVisible(restartLevelBtn);
-  enableBtnWhenVisible(quitBtn);
-  mainHub();
-  gameFlow(mainHub());
+  displayTotalNumOfFlags() {
+    totalFlagsInLevel.textContent = this.initialLength;
+  }
 }
 
 //prettier-ignore
@@ -197,7 +194,21 @@ const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney"
 
 /////////////////////////////////////////////////////////////////
 // console.log(bonus.statesArrayClone);
+// console.log(europe.addPositive());
+// console.log(europe.addPlus());
 ////////////////////////////////////////////////////////////////
+
+function startGame() {
+  playOnStartTone();
+  makeVisibleOnStart();
+  hideStartBtn();
+  startTimer();
+  enableBtnWhenVisible(restartLevelBtn);
+  enableBtnWhenVisible(quitBtn);
+  mainHub();
+  gameFlow(mainHub());
+}
+
 const fromStringToVar = {
   europe: europe,
   asia: asia,
@@ -224,7 +235,9 @@ function gameFlow(object) {
   object.otherAnswers();
   object.trueAnswer();
   object.wrongAnswer();
+  object.displayTotalNumOfFlags();
 }
+
 console.log(europe);
 /////////////////////////////////////////////////////////////////////
 
