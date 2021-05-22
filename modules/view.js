@@ -1,4 +1,4 @@
-import { gameInfo } from '../controller.js';
+import { gameInfo, choices } from '../controller.js';
 
 export function greenThumbFlash() {
   hits.classList.add('green-b-b');
@@ -32,4 +32,13 @@ export function paintRedBackground(element) {
   setTimeout(() => {
     element.style.backgroundColor = 'var(--fields-background-color)';
   }, 400);
+}
+
+export function clearFields() {
+  gameInfo.textContent = '';
+  choices.forEach(choice => {
+    choice.textContent = '';
+    choice.classList.remove('true', 'false');
+    choice.closest('.answers').classList.remove('true', 'false');
+  });
 }
