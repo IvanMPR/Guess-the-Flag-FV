@@ -96,12 +96,12 @@ function init() {
 }
 
 class Continent {
-  counterPos = 0;
-  counterNeg = 0;
   constructor(statesArray) {
     this.statesArray = statesArray;
     this.statesArrayClone = statesArray.slice();
     this.initialLength = statesArray.length;
+    this.counterPos = 5;
+    this.counterNeg = 3;
   }
 
   shuffle(array) {
@@ -152,14 +152,18 @@ class Continent {
   }
 
   trueAnswer() {
-    answersGrid.addEventListener('click', function (e) {
-      if (e.target.classList.contains('true')) {
-        greenThumbFlash();
-        trueAnswerTone();
-        cheerMessage();
-        paintGreenBackground(e.target.closest('.answers'));
-      }
-    });
+    answersGrid.addEventListener(
+      'click',
+      function (e) {
+        if (e.target.classList.contains('true')) {
+          greenThumbFlash();
+          trueAnswerTone();
+          cheerMessage();
+          this.increaseCounter();
+          paintGreenBackground(e.target.closest('.answers'));
+        }
+      }.bind(this)
+    );
   }
 
   wrongAnswer() {
@@ -174,6 +178,11 @@ class Continent {
 
   displayTotalNumOfFlags() {
     totalFlagsInLevel.textContent = this.initialLength;
+  }
+
+  increaseCounter() {
+    this.counterPos++;
+    return console.log(this.counterPos);
   }
 }
 
@@ -195,7 +204,7 @@ const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney"
 /////////////////////////////////////////////////////////////////
 // console.log(bonus.statesArrayClone);
 // console.log(europe.addPositive());
-// console.log(europe.addPlus());
+// console.log(europe);
 ////////////////////////////////////////////////////////////////
 
 function startGame() {
@@ -238,7 +247,7 @@ function gameFlow(object) {
   object.displayTotalNumOfFlags();
 }
 
-console.log(europe);
+console.log(world);
 /////////////////////////////////////////////////////////////////////
 
 startBtn.addEventListener('click', startGame);
