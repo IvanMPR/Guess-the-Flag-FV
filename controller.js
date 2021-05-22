@@ -3,7 +3,7 @@
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 import { startTimer } from './modules/model.js';
 //prettier-ignore
-import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground} from './modules/view.js';
+import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields} from './modules/view.js';
 
 ////////////////////////////////////////
 //*** Buttons ***//
@@ -16,7 +16,7 @@ const continentChoice = document.getElementById('continents');
 const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 const answersGrid = document.querySelector('.answers-grid');
-const choices = document.querySelectorAll('.choices');
+export const choices = document.querySelectorAll('.choices');
 const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
 //////////////////////////////////////////////////////////
@@ -50,15 +50,6 @@ function makeVisibleOnStart() {
 // function stopTimer() {
 //   clearInterval(startTimer);
 // }
-
-function clearFields() {
-  gameInfo.textContent = '';
-  choices.forEach(choice => {
-    choice.textContent = '';
-    choice.classList.remove('true', 'false');
-    choice.closest('.answers').classList.remove('true', 'false');
-  });
-}
 
 function resetFlag() {
   const path = 'url(images/empty.jpg)';
@@ -103,24 +94,21 @@ class Continent {
     this.counterPos = 5;
     this.counterNeg = 3;
   }
-
+  // Knuth-Yates shuffle function - ///// Borowed Code /////
   shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
       randomIndex;
-
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
       // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-    console.log(array);
     return array;
   }
 
@@ -202,8 +190,6 @@ const world = new Continent(["argentina", "bahamas", "barbados", "belize", "boli
 const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney", "altai_republic", "american_samoa", "anguilla", "antarctica"]);
 
 /////////////////////////////////////////////////////////////////
-// console.log(bonus.statesArrayClone);
-// console.log(europe.addPositive());
 // console.log(europe);
 ////////////////////////////////////////////////////////////////
 
