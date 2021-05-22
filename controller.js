@@ -1,19 +1,19 @@
 // ******* Selections ******** //
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
-import { startTimer } from './modules/model.js';
+import { startTimer, quitGame, resetFlag } from './modules/model.js';
 //prettier-ignore
-import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields} from './modules/view.js';
+import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn} from './modules/view.js';
 
 ////////////////////////////////////////
 //*** Buttons ***//
-const startBtn = document.querySelector('.start');
-const restartLevelBtn = document.querySelector('.restart');
+export const startBtn = document.querySelector('.start');
+export const restartLevelBtn = document.querySelector('.restart');
 export const quitBtn = document.querySelector('.quit');
 ///////////////////////////////////////////////////////
 const languageChoice = document.getElementById('language');
 const continentChoice = document.getElementById('continents');
-const flag = document.querySelector('.flag');
+export const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 const answersGrid = document.querySelector('.answers-grid');
 export const choices = document.querySelectorAll('.choices');
@@ -25,59 +25,16 @@ export const time = document.querySelector('.time');
 const additionalInfoContainer = document.querySelector(
   '.additional-info-container'
 );
-const additionalInfo = document.querySelector('.additional-info');
+export const additionalInfo = document.querySelector('.additional-info');
 export const totalFlagsInLevel = document.querySelector(
   '.total-flags-in-level'
 );
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-init();
-
-function makeVisibleOnStart() {
-  restartLevelBtn.classList.remove('hidden');
-  quitBtn.classList.remove('hidden');
-  totalFlagsInLevel.classList.remove('hidden');
-  time.classList.remove('hidden');
-  additionalInfo.classList.remove('hidden');
-  restartLevelBtn.classList.add('visible');
-  quitBtn.classList.add('visible');
-  totalFlagsInLevel.classList.add('visible');
-  time.classList.add('visible');
-  additionalInfo.classList.add('visible');
-}
-
 // function stopTimer() {
 //   clearInterval(startTimer);
 // }
-
-function resetFlag() {
-  const path = 'url(images/empty.jpg)';
-  flag.style.backgroundImage = path;
-}
-
-function disableBtnWhenHidden(el) {
-  if (el.classList.contains('hidden')) {
-    el.disabled = true;
-    el.style.cursor = 'default';
-  }
-}
-
-function enableBtnWhenVisible(el) {
-  if (el.classList.contains('visible')) {
-    el.disabled = false;
-    el.style.cursor = 'pointer';
-  }
-}
-
-function hideStartBtn() {
-  startBtn.classList.add('hidden');
-  disableBtnWhenHidden(startBtn);
-}
-
-function quitGame() {
-  location.reload();
-}
 
 function init() {
   clearFields();
@@ -86,13 +43,15 @@ function init() {
   disableBtnWhenHidden(quitBtn);
 }
 
+init();
+
 class Continent {
   constructor(statesArray) {
     this.statesArray = statesArray;
     this.statesArrayClone = statesArray.slice();
     this.initialLength = statesArray.length;
-    this.counterPos = 5;
-    this.counterNeg = 3;
+    this.counterPos = 0;
+    this.counterNeg = 0;
   }
   // Knuth-Yates shuffle function - ///// Borowed Code /////
   shuffle(array) {
@@ -193,17 +152,6 @@ const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney"
 // console.log(europe);
 ////////////////////////////////////////////////////////////////
 
-function startGame() {
-  playOnStartTone();
-  makeVisibleOnStart();
-  hideStartBtn();
-  startTimer();
-  enableBtnWhenVisible(restartLevelBtn);
-  enableBtnWhenVisible(quitBtn);
-  mainHub();
-  gameFlow(mainHub());
-}
-
 const fromStringToVar = {
   europe: europe,
   asia: asia,
@@ -224,6 +172,7 @@ const fromStringToVar = {
 function mainHub() {
   return fromStringToVar[continentChoice.value];
 }
+
 function gameFlow(object) {
   object.shuffle(object.statesArray);
   object.displayAnswer(object.randomState());
@@ -233,7 +182,18 @@ function gameFlow(object) {
   object.displayTotalNumOfFlags();
 }
 
-console.log(world);
+function startGame() {
+  playOnStartTone();
+  makeVisibleOnStart();
+  hideStartBtn();
+  startTimer();
+  enableBtnWhenVisible(restartLevelBtn);
+  enableBtnWhenVisible(quitBtn);
+  mainHub();
+  gameFlow(mainHub());
+}
+
+console.log(mainHub());
 /////////////////////////////////////////////////////////////////////
 
 startBtn.addEventListener('click', startGame);

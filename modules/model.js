@@ -1,4 +1,4 @@
-import { time, quitBtn } from '../controller.js';
+import { time, quitBtn, flag } from '../controller.js';
 
 export const startTimer = function () {
   let startPoint = 1;
@@ -19,3 +19,12 @@ export const startTimer = function () {
     clearInterval(timer);
   });
 };
+
+export function quitGame() {
+  location.reload();
+}
+
+export function resetFlag() {
+  const path = 'url(images/empty.jpg)';
+  flag.style.backgroundImage = path;
+}

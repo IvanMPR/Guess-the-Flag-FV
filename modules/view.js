@@ -1,4 +1,5 @@
-import { gameInfo, choices } from '../controller.js';
+//prettier-ignore
+import { gameInfo, choices, restartLevelBtn, quitBtn, totalFlagsInLevel, time, additionalInfo, startBtn } from '../controller.js';
 
 export function greenThumbFlash() {
   hits.classList.add('green-b-b');
@@ -41,4 +42,36 @@ export function clearFields() {
     choice.classList.remove('true', 'false');
     choice.closest('.answers').classList.remove('true', 'false');
   });
+}
+
+export function makeVisibleOnStart() {
+  restartLevelBtn.classList.remove('hidden');
+  quitBtn.classList.remove('hidden');
+  totalFlagsInLevel.classList.remove('hidden');
+  time.classList.remove('hidden');
+  additionalInfo.classList.remove('hidden');
+  restartLevelBtn.classList.add('visible');
+  quitBtn.classList.add('visible');
+  totalFlagsInLevel.classList.add('visible');
+  time.classList.add('visible');
+  additionalInfo.classList.add('visible');
+}
+
+export function disableBtnWhenHidden(el) {
+  if (el.classList.contains('hidden')) {
+    el.disabled = true;
+    el.style.cursor = 'default';
+  }
+}
+
+export function enableBtnWhenVisible(el) {
+  if (el.classList.contains('visible')) {
+    el.disabled = false;
+    el.style.cursor = 'pointer';
+  }
+}
+
+export function hideStartBtn() {
+  startBtn.classList.add('hidden');
+  disableBtnWhenHidden(startBtn);
 }
