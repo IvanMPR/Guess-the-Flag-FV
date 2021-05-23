@@ -1,16 +1,20 @@
 //prettier-ignore
-import { gameInfo, choices, restartLevelBtn, quitBtn, totalFlagsInLevel, time, additionalInfo, startBtn } from '../controller.js';
+import { gameInfo, choices, restartLevelBtn, quitBtn, totalFlagsInLevel, time, additionalInfo, startBtn, thumbUpIcon, thumbDownIcon } from '../controller.js';
 
 export function greenThumbFlash() {
   hits.classList.add('green-b-b');
+  thumbUpIcon.classList.add('green-b-b');
   setTimeout(() => {
     hits.classList.remove('green-b-b');
+    thumbUpIcon.classList.remove('green-b-b');
   }, 400);
 }
 export function redThumbFlash() {
   misses.classList.add('red-b-b');
+  thumbDownIcon.classList.add('red-b-b');
   setTimeout(() => {
     misses.classList.remove('red-b-b');
+    thumbDownIcon.classList.remove('red-b-b');
   }, 400);
 }
 
