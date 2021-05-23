@@ -230,12 +230,18 @@ h3 {
 }
 /* *********************** */
 /* Font Awesome Icons */
-.score p#hits i {
-  margin-right: 1rem;
+#up {
+  font-size: 1.5rem;
+  border-top: 2px solid var(--fields-background-color);
+  border-bottom: 2px solid var(--fields-background-color);
+  padding: 0.4rem 0;
   color: var(--green-color);
 }
-.score p#misses i {
-  margin-left: 1rem;
+#down {
+  font-size: 1.5rem;
+  border-top: 2px solid var(--fields-background-color);
+  border-bottom: 2px solid var(--fields-background-color);
+  padding: 0.4rem 0;
   color: var(--red-color);
 }
 
