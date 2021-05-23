@@ -1,7 +1,13 @@
 // ******* Selections ******** //
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
-import { startTimer, quitGame, resetFlag } from './modules/model.js';
+//prettier-ignore
+import {
+  startTimer,
+  quitGame,
+  resetFlag,
+} from './modules/model.js';
+
 //prettier-ignore
 import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn} from './modules/view.js';
 
@@ -123,10 +129,18 @@ class Continent {
           redThumbFlash();
           falseAnswerTone();
           this.addMinus();
+          this.wrongAnswerMessage();
           paintRedBackground(e.target.closest('.answers'));
         }
       }.bind(this)
     );
+  }
+
+  wrongAnswerMessage() {
+    const trueAnswer = `${this.randomState()[0].toUpperCase()}${this.randomState().slice(
+      1
+    )}`;
+    return (gameInfo.textContent = `Wrong Answer ! The Correct Answer was ${trueAnswer}`);
   }
 
   displayTotalNumOfFlags() {
@@ -145,7 +159,7 @@ class Continent {
 }
 
 //prettier-ignore
-const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus"]);
+const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "bosnia_and_herzegovina"]);
 //prettier-ignore
 const asia = new Continent(["afghanistan", "armenia", "azerbaijan", "bahrain", "bangladesh", "bhutan", "brunei", "cambodia", "china"]);
 //prettier-ignore
