@@ -19,6 +19,8 @@ const answersGrid = document.querySelector('.answers-grid');
 export const choices = document.querySelectorAll('.choices');
 const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
+export const thumbUpIcon = document.getElementById('up');
+export const thumbDownIcon = document.getElementById('down');
 //////////////////////////////////////////////////////////
 export const gameInfo = document.getElementById('game-info-text');
 export const time = document.querySelector('.time');
@@ -106,7 +108,7 @@ class Continent {
           greenThumbFlash();
           trueAnswerTone();
           cheerMessage();
-          this.increaseCounter();
+          this.addPlus();
           paintGreenBackground(e.target.closest('.answers'));
         }
       }.bind(this)
@@ -114,22 +116,31 @@ class Continent {
   }
 
   wrongAnswer() {
-    answersGrid.addEventListener('click', function (e) {
-      if (!e.target.classList.contains('true')) {
-        redThumbFlash();
-        falseAnswerTone();
-        paintRedBackground(e.target.closest('.answers'));
-      }
-    });
+    answersGrid.addEventListener(
+      'click',
+      function (e) {
+        if (!e.target.classList.contains('true')) {
+          redThumbFlash();
+          falseAnswerTone();
+          this.addMinus();
+          paintRedBackground(e.target.closest('.answers'));
+        }
+      }.bind(this)
+    );
   }
 
   displayTotalNumOfFlags() {
     totalFlagsInLevel.textContent = this.initialLength;
   }
 
-  increaseCounter() {
+  addPlus() {
     this.counterPos++;
-    return console.log(this.counterPos);
+    return (hits.textContent = String(this.counterPos).padStart(2, 0));
+  }
+
+  addMinus() {
+    this.counterNeg++;
+    return (misses.textContent = String(this.counterNeg).padStart(2, 0));
   }
 }
 
