@@ -2,12 +2,7 @@
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 //prettier-ignore
-import {
-  startTimer,
-  quitGame,
-  resetFlag,
-} from './modules/model.js';
-
+import { startTimer, quitGame,  resetFlag, } from './modules/model.js';
 //prettier-ignore
 import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn} from './modules/view.js';
 
@@ -56,8 +51,9 @@ init();
 class Continent {
   constructor(statesArray) {
     this.statesArray = statesArray;
-    this.statesArrayClone = statesArray.slice();
     this.initialLength = statesArray.length;
+    this.currentState = '';
+    this.statesArrayEmpty = [];
     this.counterPos = 0;
     this.counterNeg = 0;
   }
@@ -80,10 +76,14 @@ class Continent {
   }
 
   randomState() {
-    const pickedState = this.statesArray[this.statesArray.length - 1];
+    const pickedState = this.statesArray.pop();
     const path = `url(images/flags/${continentChoice.value}/${pickedState}.jpg)`;
     flag.style.backgroundImage = path;
 
+    this.currentState = pickedState;
+    this.statesArrayEmpty.push(pickedState);
+    // console.log(this.currentState);
+    // console.log(this.statesArrayEmpty);
     return pickedState;
   }
 
@@ -137,9 +137,7 @@ class Continent {
   }
 
   wrongAnswerMessage() {
-    const trueAnswer = `${this.randomState()[0].toUpperCase()}${this.randomState().slice(
-      1
-    )}`;
+    const trueAnswer = `${this.currentState.toUpperCase()}`;
     return (gameInfo.textContent = `Wrong Answer ! The Correct Answer was ${trueAnswer}`);
   }
 
@@ -159,7 +157,7 @@ class Continent {
 }
 
 //prettier-ignore
-const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "bosnia_and_herzegovina"]);
+const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia_and_herzegovina", "bulgaria", "croatia", "cyprus", "czech_republic", "denmark", "estonia", "finland", "france", "georgia", "germany", "greece", "hungary", "iceland", "ireland", "italy", "latvia", "liechtenstein", "lithuania", "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north_macedonia", "norway", "poland", "portugal", "romania", "russia", "san_marino", "serbia", "slovakia", "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united_kingdom", "vatican"]);
 //prettier-ignore
 const asia = new Continent(["afghanistan", "armenia", "azerbaijan", "bahrain", "bangladesh", "bhutan", "brunei", "cambodia", "china"]);
 //prettier-ignore
