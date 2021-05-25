@@ -111,6 +111,7 @@ class Continent {
       'click',
       function (e) {
         if (e.target.classList.contains('true')) {
+          console.log(e.target.dataset.field);
           greenThumbFlash();
           trueAnswerTone();
           cheerMessage();
@@ -127,6 +128,7 @@ class Continent {
       'click',
       function (e) {
         if (!e.target.classList.contains('true')) {
+          console.log(e.target.dataset.field);
           redThumbFlash();
           falseAnswerTone();
           this.addMinus();
