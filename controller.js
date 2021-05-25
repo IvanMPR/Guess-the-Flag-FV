@@ -18,6 +18,7 @@ export const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 const answersGrid = document.querySelector('.answers-grid');
 export const choices = document.querySelectorAll('.choices');
+const choicesParentDivs = document.querySelectorAll('.answers');
 const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
 export const thumbUpIcon = document.getElementById('up');
@@ -53,6 +54,7 @@ class Continent {
     this.statesArray = statesArray;
     this.initialLength = statesArray.length;
     this.currentState = '';
+    this.currentData = '';
     this.statesArrayEmpty = [];
     this.counterPos = 0;
     this.counterNeg = 0;
@@ -81,17 +83,19 @@ class Continent {
     flag.style.backgroundImage = path;
 
     this.currentState = pickedState;
+    // Push used state to 'this.statesArrayEmpty'
     this.statesArrayEmpty.push(pickedState);
-    // console.log(this.currentState);
-    // console.log(this.statesArrayEmpty);
+
     return pickedState;
   }
 
   displayAnswer() {
     const randNum = Math.floor(Math.random() * choices.length);
     const randField = choices[randNum];
-    randField.classList.add('true');
-    randField.closest('.answers').classList.add('true');
+
+    ////////////////////////////////////////////////////
+    const parent = randField.closest('.answers');
+    this.currentData = parent.dataset.field;
     randField.textContent = this.currentState;
 
     return randField;
@@ -100,7 +104,6 @@ class Continent {
   otherAnswers() {
     choices.forEach((field, i) => {
       if (field.textContent === '') {
-        field.classList.add('false');
         field.textContent = this.statesArray[i];
       }
     });
@@ -110,14 +113,19 @@ class Continent {
     answersGrid.addEventListener(
       'click',
       function (e) {
-        if (e.target.classList.contains('true')) {
-          console.log(e.target.dataset.field);
+        if (e.target.dataset.field === this.currentData) {
+          e.stopImmediatePropagation();
           greenThumbFlash();
           trueAnswerTone();
           cheerMessage();
           this.addPlus();
           paintGreenBackground(e.target.closest('.answers'));
-          e.stopPropagation();
+          setTimeout(() => {
+            init();
+          }, 2500);
+          setTimeout(() => {
+            gameFlow(mainHub());
+          }, 3000);
         }
       }.bind(this)
     );
@@ -127,14 +135,19 @@ class Continent {
     answersGrid.addEventListener(
       'click',
       function (e) {
-        if (!e.target.classList.contains('true')) {
-          console.log(e.target.dataset.field);
+        if (e.target.dataset.field !== this.currentData) {
+          e.stopImmediatePropagation();
           redThumbFlash();
           falseAnswerTone();
           this.addMinus();
           this.wrongAnswerMessage();
           paintRedBackground(e.target.closest('.answers'));
-          e.stopPropagation();
+          setTimeout(() => {
+            init();
+          }, 2500);
+          setTimeout(() => {
+            gameFlow(mainHub());
+          }, 3000);
         }
       }.bind(this)
     );
@@ -221,7 +234,7 @@ function startGame() {
   gameFlow(mainHub());
 }
 
-console.log(mainHub());
+// console.log(mainHub());
 /////////////////////////////////////////////////////////////////////
 
 startBtn.addEventListener('click', startGame);
