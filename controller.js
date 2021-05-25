@@ -18,7 +18,6 @@ export const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 const answersGrid = document.querySelector('.answers-grid');
 export const choices = document.querySelectorAll('.choices');
-const choicesParentDivs = document.querySelectorAll('.answers');
 const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
 export const thumbUpIcon = document.getElementById('up');
