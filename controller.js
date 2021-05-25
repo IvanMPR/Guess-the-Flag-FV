@@ -87,12 +87,12 @@ class Continent {
     return pickedState;
   }
 
-  displayAnswer(pickedState) {
+  displayAnswer() {
     const randNum = Math.floor(Math.random() * choices.length);
     const randField = choices[randNum];
     randField.classList.add('true');
     randField.closest('.answers').classList.add('true');
-    randField.textContent = pickedState;
+    randField.textContent = this.currentState;
 
     return randField;
   }
@@ -116,6 +116,7 @@ class Continent {
           cheerMessage();
           this.addPlus();
           paintGreenBackground(e.target.closest('.answers'));
+          e.stopPropagation();
         }
       }.bind(this)
     );
@@ -131,6 +132,7 @@ class Continent {
           this.addMinus();
           this.wrongAnswerMessage();
           paintRedBackground(e.target.closest('.answers'));
+          e.stopPropagation();
         }
       }.bind(this)
     );
@@ -198,7 +200,8 @@ function mainHub() {
 
 function gameFlow(object) {
   object.shuffle(object.statesArray);
-  object.displayAnswer(object.randomState());
+  object.randomState();
+  object.displayAnswer();
   object.otherAnswers();
   object.trueAnswer();
   object.wrongAnswer();
