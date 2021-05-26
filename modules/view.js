@@ -27,22 +27,25 @@ export function cheerMessage() {
 
 export function paintGreenBackground(element) {
   element.style.backgroundColor = 'var(--green-color)';
-  setTimeout(() => {
-    element.style.backgroundColor = 'var(--fields-background-color)';
-  }, 400);
+  // setTimeout(() => {
+  //   element.style.backgroundColor = 'var(--fields-background-color)';
+  // }, 400);
 }
 
 export function paintRedBackground(element) {
   element.style.backgroundColor = 'var(--red-color)';
-  setTimeout(() => {
-    element.style.backgroundColor = 'var(--fields-background-color)';
-  }, 400);
+  // setTimeout(() => {
+  //   element.style.backgroundColor = 'var(--fields-background-color)';
+  // }, 400);
 }
 
 export function clearFields() {
   gameInfo.textContent = '';
   choices.forEach(choice => {
     choice.textContent = '';
+    choice.style.fontSize = 'var(--default-font-size)';
+    choice.closest('.answers').style.backgroundColor =
+      'var(--fields-background-color)';
   });
 }
 
@@ -80,4 +83,10 @@ export function enableBtnWhenVisible(el) {
 export function hideStartBtn() {
   startBtn.classList.add('hidden');
   disableBtnWhenHidden(startBtn);
+}
+
+export function checkLength(el, treshold) {
+  if (el.textContent.length > treshold) {
+    return (el.style.fontSize = 'var(--smaller-font-size)');
+  }
 }
