@@ -1,4 +1,4 @@
-import { time, quitBtn, flag } from '../controller.js';
+import { time, flag, mainHub, levelIsEnded } from '../controller.js';
 
 export const startTimer = function () {
   let startPoint = 1;
@@ -13,11 +13,8 @@ export const startTimer = function () {
     }
     time.textContent = `${hours} : ${minutes} : ${seconds}`;
     startPoint++;
+    if (levelIsEnded(mainHub())) clearInterval(timer);
   }, 1000);
-
-  quitBtn.addEventListener('click', () => {
-    clearInterval(timer);
-  });
 };
 
 export function quitGame() {
