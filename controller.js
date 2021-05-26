@@ -1,11 +1,10 @@
-// ******* Selections ******** //
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 //prettier-ignore
 import { startTimer, quitGame,  resetFlag, } from './modules/model.js';
 //prettier-ignore
 import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn, checkLength} from './modules/view.js';
-
+// ******* Selections ******** //
 ////////////////////////////////////////
 //*** Buttons ***//
 export const startBtn = document.querySelector('.start');
@@ -75,7 +74,7 @@ class Continent {
   }
 
   randomState() {
-    // After shuffling, last state from the array is picked
+    // After shuffling, last state from the array is picked ...
     const pickedState = this.statesArray.pop();
     const path = `url(images/flags/${continentChoice.value}/${pickedState}.jpg)`;
     flag.style.backgroundImage = path;
@@ -100,6 +99,7 @@ class Continent {
   }
 
   displayAnswer() {
+    //... and displayed in random field as true answer ...
     const randNum = Math.floor(Math.random() * choices.length);
     const randField = choices[randNum];
     ////////////////////////////////////////////////////
@@ -113,6 +113,7 @@ class Continent {
   }
 
   otherAnswers() {
+    //... while other fields are filled with random states ...
     choices.forEach((field, i) => {
       if (field.textContent === '') {
         field.textContent = this.statesArray[i];
@@ -128,6 +129,7 @@ class Continent {
   }
 
   trueAnswer() {
+    //... if the click happened on the true answer field, logic from below will be applied ...
     answersGrid.addEventListener(
       'click',
       function (e) {
@@ -150,6 +152,7 @@ class Continent {
   }
 
   wrongAnswer() {
+    // ... and if the click happen on the field with false answer, code from below will run ...
     answersGrid.addEventListener(
       'click',
       function (e) {

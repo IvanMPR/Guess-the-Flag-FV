@@ -4,8 +4,8 @@
   --text-color: #333;
   --border-color: #333;
   --fields-background-color: #fff;
-  /* --box-shadows: box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.1); */
-  /* --text-shadows: text-shadow: 2px 2px 5px rgba(50, 50, 50, 0.4); */
+  --box-shadows: -1px 1px 5px 5px rgba(50, 50, 50, 0.1);
+  /* --text-shadows: 2px 2px 5px rgba(50, 50, 50, 0.4); */
   --green-color: #5cb85c;
   --green-color-darker: #52a552;
   --red-color: #d9534f;
@@ -102,10 +102,9 @@ body::before {
   font-size: 1.6rem;
   padding: 0.5rem;
   cursor: pointer;
-  /* background: khaki; */
 }
 .navbar select:hover {
-  box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.1);
+  box-shadow: var(--box-shadows);
   transition: box-shadow 0.15s ease-in;
 }
 
@@ -161,7 +160,7 @@ h3 {
 .btn:hover {
   color: #fff;
   background-color: var(--green-color-darker);
-  box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.15);
+  box-shadow: var(--box-shadows);
   transition: all 0.15s ease-in;
 }
 
@@ -198,7 +197,7 @@ h3 {
 }
 
 .answers:hover {
-  box-shadow: -1px 1px 5px 5px rgba(50, 50, 50, 0.15);
+  box-shadow: var(--box-shadows);
   transition: box-shadow 0.15s ease-in;
 }
 
