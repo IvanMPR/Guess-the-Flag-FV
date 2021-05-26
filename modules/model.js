@@ -13,6 +13,7 @@ export const startTimer = function () {
     }
     time.textContent = `${hours} : ${minutes} : ${seconds}`;
     startPoint++;
+    // Stop timer on level end
     if (levelIsEnded(mainHub())) clearInterval(timer);
   }, 1000);
 };

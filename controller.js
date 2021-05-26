@@ -57,6 +57,7 @@ class Continent {
     this.statesArrayEmpty = [];
     this.counterPos = 0;
     this.counterNeg = 0;
+    this.levelIsEnded = false;
   }
   // Knuth-Yates shuffle function - ///// Borowed Code /////
   shuffle(array) {
@@ -86,9 +87,10 @@ class Continent {
     this.statesArrayEmpty.push(pickedState);
     // Check if level is ended
     if (this.statesArrayEmpty.length > this.initialLength) {
+      this.levelIsEnded = true;
       playOnLevelEndTone();
       init();
-      // stopTimer();
+
       gameInfo.textContent = `Congratulations ! You had ${this.counterPos} correct, and ${this.counterNeg} wrong answers !`;
       // flag.style.backgroundImage = 'url(images/empty.jpg)';
     }
@@ -99,7 +101,6 @@ class Continent {
   displayAnswer() {
     const randNum = Math.floor(Math.random() * choices.length);
     const randField = choices[randNum];
-
     ////////////////////////////////////////////////////
     const parent = randField.closest('.answers');
     this.currentData = parent.dataset.field;
@@ -220,8 +221,12 @@ const fromStringToVar = {
 // console.log(listenForContinentChange());
 // const object = listenForContinentChange();
 
-function mainHub() {
+export function mainHub() {
   return fromStringToVar[continentChoice.value];
+}
+
+export function levelIsEnded(object) {
+  return object.levelIsEnded;
 }
 
 function gameFlow(object) {
