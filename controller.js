@@ -35,9 +35,9 @@ export const totalFlagsInLevel = document.querySelector(
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-// function stopTimer() {
-//   clearInterval(startTimer);
-// }
+function stopTimer() {
+  clearInterval(startTimer);
+}
 
 function init() {
   clearFields();
@@ -84,6 +84,14 @@ class Continent {
     this.currentState = pickedState;
     // Push used state to 'this.statesArrayEmpty'
     this.statesArrayEmpty.push(pickedState);
+    // Check if level is ended
+    if (this.statesArrayEmpty.length > this.initialLength) {
+      playOnLevelEndTone();
+      init();
+      // stopTimer();
+      gameInfo.textContent = `Congratulations ! You had ${this.counterPos} correct, and ${this.counterNeg} wrong answers !`;
+      // flag.style.backgroundImage = 'url(images/empty.jpg)';
+    }
 
     return pickedState;
   }
@@ -95,8 +103,8 @@ class Continent {
     ////////////////////////////////////////////////////
     const parent = randField.closest('.answers');
     this.currentData = parent.dataset.field;
-    randField.textContent = this.currentState;
 
+    randField.textContent = this.currentState;
     return randField;
   }
 
@@ -104,6 +112,10 @@ class Continent {
     choices.forEach((field, i) => {
       if (field.textContent === '') {
         field.textContent = this.statesArray[i];
+        // Fillig empty fields from statesArrayEmpty when statesArray.length is less than 5
+        if (this.statesArray.length < 5) {
+          field.textContent = this.statesArrayEmpty[i];
+        }
       }
     });
   }
@@ -238,6 +250,6 @@ function startGame() {
 
 startBtn.addEventListener('click', startGame);
 // continentChoice.addEventListener('change', listenForContinentChange);
-// restartLevelBtn.addEventListener('click', greenThumbFlash);
+// restartLevelBtn.addEventListener('click', stopTimer);
 continentChoice.addEventListener('change', mainHub);
 quitBtn.addEventListener('click', quitGame);
