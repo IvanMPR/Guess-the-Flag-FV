@@ -43,8 +43,6 @@ export function clearFields() {
   gameInfo.textContent = '';
   choices.forEach(choice => {
     choice.textContent = '';
-    choice.classList.remove('true', 'false');
-    choice.closest('.answers').classList.remove('true', 'false');
   });
 }
 
