@@ -16,7 +16,7 @@ const languageChoice = document.getElementById('language');
 const continentChoice = document.getElementById('continents');
 export const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
-const answersGrid = document.querySelector('.answers-grid');
+export const answersGrid = document.querySelector('.answers-grid');
 export const choices = document.querySelectorAll('.choices');
 const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
@@ -34,10 +34,6 @@ export const totalFlagsInLevel = document.querySelector(
 );
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
-
-function stopTimer() {
-  clearInterval(startTimer);
-}
 
 function init() {
   clearFields();
@@ -89,9 +85,14 @@ class Continent {
     if (this.statesArrayEmpty.length > this.initialLength) {
       this.levelIsEnded = true;
       playOnLevelEndTone();
-      init();
+      resetFlag();
+      clearFields();
+      choices.forEach(choice => {
+        choice.classList.add('hidden');
+      });
+      answersGrid.style.pointerEvents = 'none';
+
       gameInfo.textContent = `Congratulations ! You had ${this.counterPos} correct, and ${this.counterNeg} wrong answers !`;
-      // flag.style.backgroundImage = 'url(images/empty.jpg)';
     }
 
     return pickedState;
