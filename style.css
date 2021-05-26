@@ -10,6 +10,9 @@
   --green-color-darker: #52a552;
   --red-color: #d9534f;
   --red-color-darker: #c34a47;
+  /* Default font size and smaller font size for answers fields */
+  --default-font-size: 2rem;
+  --smaller-font-size: 1.5rem;
 }
 
 * {
@@ -187,7 +190,7 @@ h3 {
   width: 22rem;
   height: 5rem;
   background-color: var(--fields-background-color);
-  font-size: 2rem;
+  font-size: var(--default-font-size);
   padding: 0.5rem;
   text-transform: uppercase;
   border: 1px solid var(--border-color);
