@@ -1,5 +1,5 @@
 //prettier-ignore
-import { gameInfo, choices, restartLevelBtn, quitBtn, totalFlagsInLevel, time, additionalInfo, startBtn, thumbUpIcon, thumbDownIcon } from '../controller.js';
+import { gameInfo, choices, restartLevelBtn, quitBtn, totalFlagsInLevel, time, additionalInfo, startBtn, thumbUpIcon, thumbDownIcon, answersGrid } from '../controller.js';
 
 export function greenThumbFlash() {
   hits.classList.add('green-b-b');
@@ -57,6 +57,10 @@ export function makeVisibleOnStart() {
   totalFlagsInLevel.classList.add('visible');
   time.classList.add('visible');
   additionalInfo.classList.add('visible');
+  choices.forEach(choice => {
+    choice.classList.remove('hidden');
+  });
+  answersGrid.style.pointerEvents = 'initial';
 }
 
 export function disableBtnWhenHidden(el) {

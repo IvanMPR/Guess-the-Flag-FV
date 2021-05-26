@@ -90,7 +90,6 @@ class Continent {
       this.levelIsEnded = true;
       playOnLevelEndTone();
       init();
-
       gameInfo.textContent = `Congratulations ! You had ${this.counterPos} correct, and ${this.counterNeg} wrong answers !`;
       // flag.style.backgroundImage = 'url(images/empty.jpg)';
     }
