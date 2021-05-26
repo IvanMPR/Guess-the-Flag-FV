@@ -4,7 +4,7 @@ import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } 
 //prettier-ignore
 import { startTimer, quitGame,  resetFlag, } from './modules/model.js';
 //prettier-ignore
-import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn} from './modules/view.js';
+import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn, checkLength} from './modules/view.js';
 
 ////////////////////////////////////////
 //*** Buttons ***//
@@ -17,6 +17,7 @@ const continentChoice = document.getElementById('continents');
 export const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 export const answersGrid = document.querySelector('.answers-grid');
+const answers = document.querySelectorAll('.answers');
 export const choices = document.querySelectorAll('.choices');
 const hits = document.getElementById('hits');
 const misses = document.getElementById('misses');
@@ -74,12 +75,13 @@ class Continent {
   }
 
   randomState() {
+    // After shuffling, last state from the array is picked
     const pickedState = this.statesArray.pop();
     const path = `url(images/flags/${continentChoice.value}/${pickedState}.jpg)`;
     flag.style.backgroundImage = path;
-
+    // Set value of current state to be pickedState
     this.currentState = pickedState;
-    // Push used state to 'this.statesArrayEmpty'
+    // Push pickedState to 'this.statesArrayEmpty'
     this.statesArrayEmpty.push(pickedState);
     // Check if level is ended
     if (this.statesArrayEmpty.length > this.initialLength) {
@@ -91,7 +93,6 @@ class Continent {
         choice.classList.add('hidden');
       });
       answersGrid.style.pointerEvents = 'none';
-
       gameInfo.textContent = `Congratulations ! You had ${this.counterPos} correct, and ${this.counterNeg} wrong answers !`;
     }
 
@@ -106,6 +107,8 @@ class Continent {
     this.currentData = parent.dataset.field;
 
     randField.textContent = this.currentState;
+    checkLength(randField, 14);
+
     return randField;
   }
 
@@ -113,9 +116,12 @@ class Continent {
     choices.forEach((field, i) => {
       if (field.textContent === '') {
         field.textContent = this.statesArray[i];
+        checkLength(field, 14);
+
         // Fillig empty fields from statesArrayEmpty when statesArray.length is less than 5
         if (this.statesArray.length < 5) {
           field.textContent = this.statesArrayEmpty[i];
+          checkLength(field, 14);
         }
       }
     });
@@ -134,10 +140,10 @@ class Continent {
           paintGreenBackground(e.target.closest('.answers'));
           setTimeout(() => {
             init();
-          }, 2500);
+          }, 2800);
           setTimeout(() => {
             gameFlow(mainHub());
-          }, 3000);
+          }, 3500);
         }
       }.bind(this)
     );
@@ -147,6 +153,10 @@ class Continent {
     answersGrid.addEventListener(
       'click',
       function (e) {
+        const trueField = Array.from(answers).find(
+          div => div.dataset.field === this.currentData
+        );
+
         if (e.target.dataset.field !== this.currentData) {
           e.stopImmediatePropagation();
           redThumbFlash();
@@ -155,11 +165,14 @@ class Continent {
           this.wrongAnswerMessage();
           paintRedBackground(e.target.closest('.answers'));
           setTimeout(() => {
+            paintGreenBackground(trueField);
+          }, 200);
+          setTimeout(() => {
             init();
-          }, 2500);
+          }, 3500);
           setTimeout(() => {
             gameFlow(mainHub());
-          }, 3000);
+          }, 4000);
         }
       }.bind(this)
     );
