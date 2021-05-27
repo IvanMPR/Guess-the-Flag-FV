@@ -3,7 +3,7 @@ import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } 
 //prettier-ignore
 import { startTimer, quitGame,  resetFlag, } from './modules/model.js';
 //prettier-ignore
-import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn, checkLength} from './modules/view.js';
+import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn, checkLength, removeUnderscore} from './modules/view.js';
 // ******* Selections ******** //
 ////////////////////////////////////////
 //*** Buttons ***//
@@ -106,8 +106,8 @@ class Continent {
     const parent = randField.closest('.answers');
     this.currentData = parent.dataset.field;
 
-    randField.textContent = this.currentState;
-    checkLength(randField, 14);
+    randField.textContent = removeUnderscore(this.currentState);
+    checkLength(randField, 17);
 
     return randField;
   }
@@ -116,13 +116,13 @@ class Continent {
     //... while other fields are filled with random states ...
     choices.forEach((field, i) => {
       if (field.textContent === '') {
-        field.textContent = this.statesArray[i];
-        checkLength(field, 14);
+        field.textContent = removeUnderscore(this.statesArray[i]);
+        checkLength(field, 17);
 
         // Fillig empty fields from statesArrayEmpty when statesArray.length is less than 5
         if (this.statesArray.length < 5) {
-          field.textContent = this.statesArrayEmpty[i];
-          checkLength(field, 14);
+          field.textContent = removeUnderscore(this.statesArrayEmpty[i]);
+          checkLength(field, 17);
         }
       }
     });
@@ -266,7 +266,7 @@ function startGame() {
   gameFlow(mainHub());
 }
 
-// console.log(mainHub());
+console.log(removeUnderscore('New_Zealand_Serbia'));
 /////////////////////////////////////////////////////////////////////
 
 startBtn.addEventListener('click', startGame);
