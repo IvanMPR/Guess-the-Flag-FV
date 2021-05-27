@@ -140,6 +140,7 @@ class Continent {
           cheerMessage();
           this.addPlus();
           paintGreenBackground(e.target.closest('.answers'));
+          answersGrid.style.pointerEvents = 'none';
           setTimeout(() => {
             init();
           }, 2800);
@@ -167,6 +168,7 @@ class Continent {
           this.addMinus();
           this.wrongAnswerMessage();
           paintRedBackground(e.target.closest('.answers'));
+          answersGrid.style.pointerEvents = 'none';
           setTimeout(() => {
             paintGreenBackground(trueField);
           }, 200);
@@ -266,7 +268,7 @@ function startGame() {
   gameFlow(mainHub());
 }
 
-console.log(removeUnderscore('New_Zealand_Serbia'));
+// console.log(removeUnderscore('New_Zealand_Serbia'));
 /////////////////////////////////////////////////////////////////////
 
 startBtn.addEventListener('click', startGame);
