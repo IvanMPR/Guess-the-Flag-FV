@@ -35,6 +35,7 @@ export function paintRedBackground(element) {
 
 export function clearFields() {
   gameInfo.textContent = '';
+  answersGrid.style.pointerEvents = 'initial';
   choices.forEach(choice => {
     choice.textContent = '';
     choice.style.fontSize = 'var(--default-font-size)';
