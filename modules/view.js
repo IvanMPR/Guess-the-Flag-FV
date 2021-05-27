@@ -84,3 +84,8 @@ export function checkLength(el, treshold) {
     return (el.style.fontSize = 'var(--smaller-font-size)');
   }
 }
+
+export function removeUnderscore(el) {
+  const regex = /_/g;
+  return regex.test(el) ? el.split('_').join(' ') : el;
+}
