@@ -1,3 +1,4 @@
+//prettier-ignore
 import { time, flag, mainHub, levelIsEnded } from '../controller.js';
 
 export const startTimer = function () {
@@ -16,6 +17,7 @@ export const startTimer = function () {
     // Stop timer on level end
     if (levelIsEnded(mainHub())) clearInterval(timer);
   }, 1000);
+  return timer;
 };
 
 export function quitGame() {

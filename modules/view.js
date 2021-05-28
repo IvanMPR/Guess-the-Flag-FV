@@ -90,3 +90,22 @@ export function removeUnderscore(el) {
   const regex = /_/g;
   return regex.test(el) ? el.split('_').join(' ') : el;
 }
+
+export function displayPastTime(el) {
+  const [hours, minutes, seconds] = el.split(':');
+
+  if (+hours === 0 && +seconds === 0) {
+    return `${+minutes} minutes`;
+  }
+  if (+hours === 0) {
+    return `${+minutes} ${
+      +minutes === 1 ? 'minute' : 'minutes'
+    } and ${+seconds} ${+seconds === 1 ? 'second' : 'seconds'}`;
+  }
+
+  if (+hours !== 0) {
+    return `${+hours} ${+hours === 1 ? 'hour' : 'hours'}, ${+minutes} ${
+      +minutes === 1 ? 'minute' : 'minutes'
+    } and ${+seconds} ${+seconds === 1 ? 'second' : 'seconds'}`;
+  }
+}

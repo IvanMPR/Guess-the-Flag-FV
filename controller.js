@@ -1,9 +1,9 @@
 //prettier-ignore
 import { playOnStartTone, trueAnswerTone, falseAnswerTone, playOnLevelEndTone } from './modules/audio.js';
 //prettier-ignore
-import { startTimer, quitGame,  resetFlag, } from './modules/model.js';
+import { startTimer, quitGame,  resetFlag } from './modules/model.js';
 //prettier-ignore
-import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn, checkLength, removeUnderscore} from './modules/view.js';
+import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn, checkLength, removeUnderscore, displayPastTime} from './modules/view.js';
 // ******* Selections ******** //
 ////////////////////////////////////////
 //*** Buttons ***//
@@ -11,8 +11,8 @@ export const startBtn = document.querySelector('.start');
 export const restartLevelBtn = document.querySelector('.restart');
 export const quitBtn = document.querySelector('.quit');
 ///////////////////////////////////////////////////////
-const languageChoice = document.getElementById('language');
-const continentChoice = document.getElementById('continents');
+export const languageChoice = document.getElementById('language');
+export const continentChoice = document.getElementById('continents');
 export const flag = document.querySelector('.flag');
 ////////////////////////////////////////////////////////
 export const answersGrid = document.querySelector('.answers-grid');
@@ -92,7 +92,11 @@ class Continent {
         choice.classList.add('hidden');
       });
       answersGrid.style.pointerEvents = 'none';
-      gameInfo.textContent = `Congratulations ! You had ${this.counterPos} correct, and ${this.counterNeg} wrong answers !`;
+      gameInfo.textContent = `Congratulations ! You had ${
+        this.counterPos
+      } correct, and ${this.counterNeg} wrong answers for ${displayPastTime(
+        time.textContent
+      )} !`;
     }
 
     return pickedState;
@@ -143,7 +147,7 @@ class Continent {
           answersGrid.style.pointerEvents = 'none';
           setTimeout(() => {
             init();
-          }, 2800);
+          }, 3100);
           setTimeout(() => {
             gameFlow(mainHub());
           }, 3500);
@@ -174,7 +178,7 @@ class Continent {
           }, 200);
           setTimeout(() => {
             init();
-          }, 3500);
+          }, 3600);
           setTimeout(() => {
             gameFlow(mainHub());
           }, 4000);
@@ -185,7 +189,9 @@ class Continent {
 
   wrongAnswerMessage() {
     const trueAnswer = `${this.currentState.toUpperCase()}`;
-    return (gameInfo.textContent = `Wrong Answer ! The Correct Answer was ${trueAnswer}`);
+    return (gameInfo.textContent = `Wrong Answer ! The Correct Answer was ${removeUnderscore(
+      trueAnswer
+    )}`);
   }
 
   displayTotalNumOfFlags() {
@@ -202,7 +208,7 @@ class Continent {
     return (misses.textContent = String(this.counterNeg).padStart(2, 0));
   }
 }
-
+// console.log(displayPastTime(time.textContent));
 //prettier-ignore
 const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia_and_herzegovina", "bulgaria", "croatia", "cyprus", "czech_republic", "denmark", "estonia", "finland", "france", "georgia", "germany", "greece", "hungary", "iceland", "ireland", "italy", "latvia", "liechtenstein", "lithuania", "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north_macedonia", "norway", "poland", "portugal", "romania", "russia", "san_marino", "serbia", "slovakia", "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united_kingdom", "vatican"]);
 //prettier-ignore
@@ -232,13 +238,6 @@ const fromStringToVar = {
   bonus: bonus,
 };
 
-// const listenForContinentChange = function () {
-//   console.log(continentChoice.value);
-//   return continentChoice.value;
-// };
-// console.log(listenForContinentChange());
-// const object = listenForContinentChange();
-
 export function mainHub() {
   return fromStringToVar[continentChoice.value];
 }
@@ -266,13 +265,35 @@ function startGame() {
   enableBtnWhenVisible(quitBtn);
   mainHub();
   gameFlow(mainHub());
+  // resetLocalStorage();
 }
 
-// console.log(removeUnderscore('New_Zealand_Serbia'));
-/////////////////////////////////////////////////////////////////////
+// function resetLocalStorage() {
+//   localStorage.clear();
+//   localStorage.setItem('index', continentChoice.options.selectedIndex);
+// }
+// function logChangeToLocalStorage() {
+//   localStorage.setItem('index', continentChoice.options.selectedIndex);
+//   console.log(localStorage);
+// }
 
+// function restartLevel() {
+// location.reload();
+
+// const val = localStorage.index;
+// return console.log(val);
+// return (continentChoice.option[
+//   localStorage.getItem('value')
+// ].selected = true);
+//   continentChoice.options.selectedIndex = val;
+// }
+/////////////////////////////////////////////////////////////////////
+// localStorage.removeItem('value');
+// console.log(localStorage);
+// localStorage.clear();
 startBtn.addEventListener('click', startGame);
-// continentChoice.addEventListener('change', listenForContinentChange);
-// restartLevelBtn.addEventListener('click', stopTimer);
+
+restartLevelBtn.addEventListener('click', restartLevel);
+continentChoice.addEventListener('change', logChangeToLocalStorage);
 continentChoice.addEventListener('change', mainHub);
 quitBtn.addEventListener('click', quitGame);
