@@ -22,6 +22,7 @@ export const startTimer = function () {
 
 export function quitGame() {
   location.reload();
+  localStorage.clear();
 }
 
 export function resetFlag() {
