@@ -154,7 +154,6 @@ h3 {
   border: 1px solid var(--border-color);
   border-radius: 0;
   background-color: var(--green-color);
-  /* display: block; */
 }
 
 .btn:hover {
@@ -215,7 +214,6 @@ h3 {
   padding: 0.5rem 0;
   border: 1px solid var(--border-color);
   z-index: 5;
-  /* opacity: 0.99; */
 }
 
 .score p {
@@ -280,7 +278,6 @@ h3 {
 .time-buttons-container {
   position: inherit;
   width: 100%;
-  /* height: auto; */
   z-index: 5;
   margin: auto;
   display: flex;

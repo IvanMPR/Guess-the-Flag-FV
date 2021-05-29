@@ -5,7 +5,7 @@ import { startTimer, quitGame,  resetFlag } from './modules/model.js';
 //prettier-ignore
 import { greenThumbFlash, redThumbFlash, cheerMessage, paintGreenBackground, paintRedBackground, clearFields, makeVisibleOnStart, disableBtnWhenHidden, enableBtnWhenVisible, hideStartBtn, checkLength, removeUnderscore, displayPastTime} from './modules/view.js';
 // ******* Selections ******** //
-////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 //*** Buttons ***//
 export const startBtn = document.querySelector('.start');
 export const restartLevelBtn = document.querySelector('.restart');
