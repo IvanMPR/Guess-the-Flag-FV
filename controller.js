@@ -109,7 +109,7 @@ class Continent {
     ////////////////////////////////////////////////////
     const parent = randField.closest('.answers');
     this.currentData = parent.dataset.field;
-
+    ////////////////////////////////////////////////////
     randField.textContent = removeUnderscore(this.currentState);
     checkLength(randField, 17);
 
@@ -149,7 +149,7 @@ class Continent {
             init();
           }, 3100);
           setTimeout(() => {
-            gameFlow(mainHub());
+            App(mainHub());
           }, 3500);
         }
       }.bind(this)
@@ -180,7 +180,7 @@ class Continent {
             init();
           }, 3600);
           setTimeout(() => {
-            gameFlow(mainHub());
+            App(mainHub());
           }, 4000);
         }
       }.bind(this)
@@ -208,7 +208,7 @@ class Continent {
     return (misses.textContent = String(this.counterNeg).padStart(2, 0));
   }
 }
-
+////////////////////////////////////////////////////////////////
 //prettier-ignore
 const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia_and_herzegovina", "bulgaria", "croatia", "cyprus", "czech_republic", "denmark", "estonia", "finland", "france", "georgia", "germany", "greece", "hungary", "iceland", "ireland", "italy", "latvia", "liechtenstein", "lithuania", "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north_macedonia", "norway", "poland", "portugal", "romania", "russia", "san_marino", "serbia", "slovakia", "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united_kingdom", "vatican"]);
 //prettier-ignore
@@ -223,12 +223,9 @@ const australia = new Continent(["australia", "fiji", "kiribati", "marshall_isla
 const world = new Continent(["argentina", "bahamas", "barbados", "belize", "bolivia", "brazil", "canada", "chile", "colombia", "costa_rica"]);
 //prettier-ignore
 const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney", "altai_republic", "american_samoa", "anguilla", "antarctica", "aruba", "bashkortostan", "bermuda", "bih_federation", "bikini_atoll", "uk_antarctic_territory", "uk_ind._ocean_territ.", "brittany", "buryatia", "cayman_islands", "chechen_republic", "chechen_rep._of_ichkeria", "christmas_island", "chuvashia", "cook_islands", "crimea", "dagestan", "easter_island", "england", "european_union", "falkland_islands", "faroe_islands", "french_polynesia", "french_s._&_ant._lands", "gibraltar", "greenland", "guam", "guernsey", "herm", "hong_kong", "ingushetia", "isle_of_man", "jersey", "kabardino_balkaria", "kalmikia", "karachay_cherkassia", "karakalpakstan", "karelia", "khakassia", "komi", "kosovo_&_metohija", "kuban_peoples_rep", "ladonia", "los_altos", "macau", "mari_el", "montserrat", "mordovia", "nagorno_karabah", "netherlands_antilles", "niue", "norfolk_islands", "north_ossetia", "north._mariana_islands", "palestine", "pitcairn_islands", "puerto_rico", "republika_srpska", "saba", "saint_barthelemy", "saint_helena", "saint_martin", "st_pierre_and_miquelon", "sakha_republic", "sark", "sealand_principality", "sikkim", "somaliland", "s._georgia_&_s._s._islands", "south_ossetia", "sov._mil._ord._of_malta", "taiwan", "tatarstan", "tierra_del_fuego", "tokelau", "transnistria", "tristan_da_cunha", "tur._rep._of_nor._cyprus", "turks_and_caicos_isl.", "tuva", "udmurtia", "virgin_islands_uk", "virgin_islands_us", "wales", "western_sahara"]);
-
 /////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////
-
-const fromStringToVar = {
+const fromStringToObj = {
   europe: europe,
   asia: asia,
   africa: africa,
@@ -239,14 +236,14 @@ const fromStringToVar = {
 };
 
 export function mainHub() {
-  return fromStringToVar[continentChoice.value];
+  return fromStringToObj[continentChoice.value];
 }
 
 export function levelIsEnded(object) {
   return object.levelIsEnded;
 }
 
-function gameFlow(object) {
+function App(object) {
   object.shuffle(object.statesArray);
   object.randomState();
   object.displayAnswer();
@@ -264,7 +261,7 @@ function startGame() {
   enableBtnWhenVisible(restartLevelBtn);
   enableBtnWhenVisible(quitBtn);
   mainHub();
-  gameFlow(mainHub());
+  App(mainHub());
 }
 
 /////////////////////////////////////////////////////////////////////
