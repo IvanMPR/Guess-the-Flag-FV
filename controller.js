@@ -208,24 +208,24 @@ class Continent {
     return (misses.textContent = String(this.counterNeg).padStart(2, 0));
   }
 }
-// console.log(displayPastTime(time.textContent));
+
 //prettier-ignore
 const europe = new Continent(["albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia_and_herzegovina", "bulgaria", "croatia", "cyprus", "czech_republic", "denmark", "estonia", "finland", "france", "georgia", "germany", "greece", "hungary", "iceland", "ireland", "italy", "latvia", "liechtenstein", "lithuania", "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north_macedonia", "norway", "poland", "portugal", "romania", "russia", "san_marino", "serbia", "slovakia", "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united_kingdom", "vatican"]);
 //prettier-ignore
-const asia = new Continent(["afghanistan", "armenia", "azerbaijan", "bahrain", "bangladesh", "bhutan", "brunei", "cambodia", "china"]);
+const asia = new Continent(["afghanistan", "armenia", "azerbaijan", "bahrain", "bangladesh", "bhutan", "brunei", "cambodia", "china", "india", "indonesia", "iran", "iraq", "israel", "japan", "jordan", "kazakhstan", "kuwait", "kyrgyzstan", "laos", "lebanon", "malaysia", "maldives", "mongolia", "myanmar", "nepal", "north_korea", "oman", "pakistan", "philippines", "qatar", "russia", "saudi_arabia", "singapore", "south_korea", "sri_lanka", "syria", "taiwan", "tajikistan", "thailand", "east_timor", "turkey", "turkmenistan", "united_arab_emirates", "uzbekistan", "vietnam", "yemen"]);
 //prettier-ignore
-const africa = new Continent(["algeria", "angola", "benin", "botswana", "burkina_faso", "burundi", "cape_verde"]);
+const africa = new Continent(["algeria", "angola ", "benin", "botswana", "burkina_faso", "burundi", "cape_verde", "cameroon", "central_african_rep", "chad", "comoros", "dem._republic_of_congo", "djibouti", "egypt", "equatorial_guinea", "eritrea", "ethiopia", "gabon", "gambia", "ghana", "guinea", "guinea_bissau", "ivory_coast", "kenya", "lesotho", "liberia", "libya", "madagascar", "malawi", "mali", "mauritania", "mauritius", "morocco", "mozambique", "namibia", "niger", "nigeria", "republic_of_kongo", "rwanda", "sao_tome_and_principe", "senegal", "seychelles", "sierra_leone", "somalia", "south_africa", "south_sudan", "sudan", "swaziland", "tanzania", "togo", "tunisia", "uganda", "zambia", "zimbabwe"]);
 //prettier-ignore
-const america = new Continent(["antigua_and_barbuda", "argentina", "bahamas", "barbados", "belize", "bolivia"]);
+const america = new Continent(["antigua_and_barbuda", "argentina", "bahamas", "barbados", "belize", "bolivia", "brazil", "canada", "chile", "colombia", "costa_rica", "cuba", "dominica", "dominican_republic", "ecuador", "el_salvador", "grenada", "guatemala", "guyana", "haiti", "honduras", "jamaica", "mexico", "nicaragua", "panama", "paraguay", "peru", "saint_kitts_and_nevis", "saint_lucia", "st_vincent_&_grenadines", "suriname", "trinidad_and_tobago", "uruguay", "u.s.a", "venezuela"]);
 //prettier-ignore
-const australia = new Continent(["australia", "fiji", "kiribati", "marshall_islands", "micronesia", "nauru", "new_zealand", "palau"]);
+const australia = new Continent(["australia", "fiji", "kiribati", "marshall_islands", "micronesia", "nauru", "new_zealand", "palau", "papua_new_guinea", "samoa", "solomon_islands", "tonga", "tuvalu", "vanuatu"]);
 //prettier-ignore
 const world = new Continent(["argentina", "bahamas", "barbados", "belize", "bolivia", "brazil", "canada", "chile", "colombia", "costa_rica"]);
 //prettier-ignore
-const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney", "altai_republic", "american_samoa", "anguilla", "antarctica"]);
+const bonus = new Continent(["abkhazia", "adygea", "ajaria", "aland", "alderney", "altai_republic", "american_samoa", "anguilla", "antarctica", "aruba", "bashkortostan", "bermuda", "bih_federation", "bikini_atoll", "uk_antarctic_territory", "uk_ind._ocean_territ.", "brittany", "buryatia", "cayman_islands", "chechen_republic", "chechen_rep._of_ichkeria", "christmas_island", "chuvashia", "cook_islands", "crimea", "dagestan", "easter_island", "england", "european_union", "falkland_islands", "faroe_islands", "french_polynesia", "french_s._&_ant._lands", "gibraltar", "greenland", "guam", "guernsey", "herm", "hong_kong", "ingushetia", "isle_of_man", "jersey", "kabardino_balkaria", "kalmikia", "karachay_cherkassia", "karakalpakstan", "karelia", "khakassia", "komi", "kosovo_&_metohija", "kuban_peoples_rep", "ladonia", "los_altos", "macau", "mari_el", "montserrat", "mordovia", "nagorno_karabah", "netherlands_antilles", "niue", "norfolk_islands", "north_ossetia", "north._mariana_islands", "palestine", "pitcairn_islands", "puerto_rico", "republika_srpska", "saba", "saint_barthelemy", "saint_helena", "saint_martin", "st_pierre_and_miquelon", "sakha_republic", "sark", "sealand_principality", "sikkim", "somaliland", "s._georgia_&_s._s._islands", "south_ossetia", "sov._mil._ord._of_malta", "taiwan", "tatarstan", "tierra_del_fuego", "tokelau", "transnistria", "tristan_da_cunha", "tur._rep._of_nor._cyprus", "turks_and_caicos_isl.", "tuva", "udmurtia", "virgin_islands_uk", "virgin_islands_us", "wales", "western_sahara"]);
 
 /////////////////////////////////////////////////////////////////
-// console.log(europe);
+
 ////////////////////////////////////////////////////////////////
 
 const fromStringToVar = {
@@ -265,35 +265,22 @@ function startGame() {
   enableBtnWhenVisible(quitBtn);
   mainHub();
   gameFlow(mainHub());
-  // resetLocalStorage();
 }
 
-// function resetLocalStorage() {
-//   localStorage.clear();
-//   localStorage.setItem('index', continentChoice.options.selectedIndex);
-// }
-// function logChangeToLocalStorage() {
-//   localStorage.setItem('index', continentChoice.options.selectedIndex);
-//   console.log(localStorage);
-// }
-
-// function restartLevel() {
-// location.reload();
-
-// const val = localStorage.index;
-// return console.log(val);
-// return (continentChoice.option[
-//   localStorage.getItem('value')
-// ].selected = true);
-//   continentChoice.options.selectedIndex = val;
-// }
 /////////////////////////////////////////////////////////////////////
-// localStorage.removeItem('value');
-// console.log(localStorage);
-// localStorage.clear();
-startBtn.addEventListener('click', startGame);
 
-restartLevelBtn.addEventListener('click', restartLevel);
-continentChoice.addEventListener('change', logChangeToLocalStorage);
-continentChoice.addEventListener('change', mainHub);
+window.addEventListener('load', function () {
+  if (localStorage.getItem('index')) {
+    continentChoice.options[localStorage.getItem('index')].selected = true;
+  }
+});
+startBtn.addEventListener('click', startGame);
+restartLevelBtn.addEventListener('click', function () {
+  location.reload();
+});
 quitBtn.addEventListener('click', quitGame);
+continentChoice.addEventListener('change', mainHub);
+continentChoice.addEventListener('change', function () {
+  localStorage.setItem('index', this.options[this.selectedIndex].index);
+  location.reload();
+});
