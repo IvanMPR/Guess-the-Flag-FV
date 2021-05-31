@@ -264,6 +264,15 @@ function startGame() {
   App(mainHub());
 }
 
+function languageHub() {
+  if (languageChoice.value === 'srpski') {
+    window.location.assign('serbian_latin/index.html');
+  }
+  if (languageChoice.value === 'српски') {
+    window.location.assign('./serbian_cyrillic/index.html');
+  }
+}
+
 /////////////////////////////////////////////////////////////////////
 
 window.addEventListener('load', function () {
@@ -281,3 +290,4 @@ continentChoice.addEventListener('change', function () {
   localStorage.setItem('index', this.options[this.selectedIndex].index);
   location.reload();
 });
+languageChoice.addEventListener('change', languageHub);

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sr-Cyrl-CS">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <script type="module" src="controller.js"></script>
+    <title>Погоди Заставу</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <select name="lang" id="language">
+          <option value="српски">Српски Ћирилица</option>
+          <option value="srpski">Srpski Latinica</option>
+          <option value="english">English</option>
+          <option value="espanol">Español</option>
+        </select>
+        <h1>Квиз Погоди Заставу</h1>
+        <select name="choices" id="continents">
+          <option value="europe">Европа</option>
+          <option value="asia">Азија</option>
+          <option value="africa">Африка</option>
+          <option value="america">Северна & Јужна Америка</option>
+          <option value="australia">Аустралија & Океанија</option>
+          <option value="world">Свет</option>
+          <option value="bonus">Бонус</option>
+        </select>
+      </nav>
+      <div class="flag-container">
+        <div class="flag"></div>
+      </div>
+      <button class="btn start">Започни Игру</button>
+      <div class="answers-grid">
+        <div class="answers" data-field="0">
+          <p class="choices" data-field="0">Аустралија</p>
+        </div>
+        <div class="answers" data-field="1">
+          <p class="choices" data-field="1">Србија</p>
+        </div>
+        <div class="answers" data-field="2">
+          <p class="choices" data-field="2">Босна & Херцеговина</p>
+        </div>
+        <div class="answers" data-field="3">
+          <p class="choices" data-field="3">Шпанија</p>
+        </div>
+        <div class="score">
+          <i class="far fa-thumbs-up" id="up"></i>
+          <p id="hits">00</p>
+          <p id="misses">00</p>
+          <i class="far fa-thumbs-down" id="down"></i>
+        </div>
+      </div>
+      <div class="game-info-container">
+        <div class="game-info">
+          <p id="game-info-text">
+            Погрешан Одговор ! Тачан Одговор је Србија !
+          </p>
+        </div>
+      </div>
+      <div class="time-buttons-container">
+        <p class="time hidden">00 : 00 : 00</p>
+        <button class="btn restart hidden">Рестартуј Ниво</button>
+        <button class="btn quit hidden">Крај Игре</button>
+      </div>
+      <div class="additional-info-container">
+        <p class="additional-info hidden">
+          Укупан Број Застава на Овом Нивоу је :
+          <span class="total-flags-in-level hidden">47</span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
