@@ -92,9 +92,9 @@ class Continent {
         choice.classList.add('hidden');
       });
       answersGrid.style.pointerEvents = 'none';
-      gameInfo.textContent = `Congratulations ! You had ${
+      gameInfo.textContent = `Честитке ! Имали сте  ${
         this.counterPos
-      } correct, and ${this.counterNeg} wrong answers for ${displayPastTime(
+      } тачних, и ${this.counterNeg} нетачних одговора за ${displayPastTime(
         time.textContent
       )} !`;
     }
@@ -189,7 +189,7 @@ class Continent {
 
   wrongAnswerMessage() {
     const trueAnswer = `${this.currentState.toUpperCase()}`;
-    return (gameInfo.textContent = `Wrong Answer ! The Correct Answer was ${removeUnderscore(
+    return (gameInfo.textContent = `Нетачан Одговор ! Тачан Одговор је  ${removeUnderscore(
       trueAnswer
     )}`);
   }
@@ -270,6 +270,9 @@ function languageHub() {
   }
   if (languageChoice.value === 'srpski') {
     window.location.assign('../serbian_latin/index.html');
+  }
+  if (languageChoice.value === 'espanol') {
+    window.location.assign('../spanish/index.html');
   }
 }
 

@@ -20,9 +20,9 @@ export function redThumbFlash() {
 
 export function cheerMessage() {
   //prettier-ignore
-  const messages = ['Good Job', 'Nice Work', 'Way to Go', 'Keep Going', 'Awesome', 'Fantastic Work']
+  const messages = ['Одлично', 'Сјајно', 'Само Напред', 'Браво', 'Лепо', 'Свака Част']
   const randomNumber = Math.floor(Math.random() * messages.length);
-  return (gameInfo.textContent = `Correct Answer ! ${messages[randomNumber]} !`);
+  return (gameInfo.textContent = `Тачан Одговор ! ${messages[randomNumber]} !`);
 }
 
 export function paintGreenBackground(element) {
@@ -95,17 +95,17 @@ export function displayPastTime(el) {
   const [hours, minutes, seconds] = el.split(':');
 
   if (+hours === 0 && +seconds === 0) {
-    return `${+minutes} minutes`;
+    return `${+minutes} минута`;
   }
   if (+hours === 0) {
-    return `${+minutes} ${
-      +minutes === 1 ? 'minute' : 'minutes'
-    } and ${+seconds} ${+seconds === 1 ? 'second' : 'seconds'}`;
+    return `${+minutes} ${+minutes === 1 ? 'минут' : 'минута'} и ${+seconds} ${
+      +seconds === 1 ? 'секунд' : 'секунди'
+    }`;
   }
 
   if (+hours !== 0) {
-    return `${+hours} ${+hours === 1 ? 'hour' : 'hours'}, ${+minutes} ${
-      +minutes === 1 ? 'minute' : 'minutes'
-    } and ${+seconds} ${+seconds === 1 ? 'second' : 'seconds'}`;
+    return `${+hours} ${+hours === 1 ? 'сат' : 'сата'}, ${+minutes} ${
+      +minutes === 1 ? 'минут' : 'минута'
+    } и ${+seconds} ${+seconds === 1 ? 'секунд' : 'секунди'}`;
   }
 }

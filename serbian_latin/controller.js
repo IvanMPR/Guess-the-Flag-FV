@@ -92,9 +92,9 @@ class Continent {
         choice.classList.add('hidden');
       });
       answersGrid.style.pointerEvents = 'none';
-      gameInfo.textContent = `Congratulations ! You had ${
+      gameInfo.textContent = `Čestitke ! Imali ste ${
         this.counterPos
-      } correct, and ${this.counterNeg} wrong answers for ${displayPastTime(
+      } tačnih, i ${this.counterNeg} netačnih odgovora za ${displayPastTime(
         time.textContent
       )} !`;
     }
@@ -189,7 +189,7 @@ class Continent {
 
   wrongAnswerMessage() {
     const trueAnswer = `${this.currentState.toUpperCase()}`;
-    return (gameInfo.textContent = `Wrong Answer ! The Correct Answer was ${removeUnderscore(
+    return (gameInfo.textContent = `Netačan Odgovor ! Tačan Odgovor je ${removeUnderscore(
       trueAnswer
     )}`);
   }
@@ -220,7 +220,7 @@ const america = new Continent(['antigva_i_barbuda', 'argentina', 'bahami', 'barb
 //prettier-ignore
 const australia = new Continent(['australija', 'fidži', 'kiribati','maršalska_ostrva', 'mikronezija', 'nauru', 'novi_zeland', 'palau', 'papua_nova_gvineja', 'samoa', 'solomonska_ostrva', 'tonga', 'tuvalu', 'vanuatu']);
 //prettier-ignore
-const world = new Continent(['avganistan', 'jermenija', 'azerbejdžan', 'bahrein', 'bangladeš', 'butan', 'brunei', 'kambodža', 'kina', 'indija']);
+const world = new Continent(['avganistan', 'jermenija', 'azerbejdžan', 'bahrein', 'bangladeš', 'butan', 'bruneji', 'kambodža', 'kina', 'indija']);
 //prettier-ignore
 const bonus = new Continent(['abhazija', 'adigeja', 'adžarija', 'aland', 'alderni', 'republika_altaj', 'američka_samoa', 'angvila', 'antarktik', 'aruba', 'baškortostan', 'bermuda', 'bih_federacija', 'bikini_atol', 'brit._antark._ter._', 'brit._indook._ter._', 'bretanja', 'burjatija', 'kajmanska_ostrva', 'čečenska_republika', 'čečen._rep._ičkerija', 'božićna_ostrva', 'čuvašija', 'kukova_ostrva', 'krim', 'dagestan', 'uskršnja_ostrva', 'engleska', 'evropska_unija', 'foklandska_ostrva', 'farska_ostrva', 'francuska_polinezija', 'fr._južne_i_antark._zemlje', 'gibraltar', 'grenland', 'guam', 'gernzi', 'herm', 'hong_kong', 'ingušetija', 'ostrvo_man', 'džerzi', 'kabardino_balkarija', 'kalmikija', 'karačaj_čerkasija', 'karakalpakstan', 'karelija', 'khakasija', 'komi', 'kosovo_&_metohija', 'kuban_narodna_rep.', 'ladonija', 'los_altos', 'makao', 'mari_el', 'monserat', 'mordovija', 'nagorno_karabah', 'holandski_antili', 'nijue', 'norfolk_ostrvo', 'severna_osetija', 'sev._marijanska_ostrva', 'palestina', 'ostrvo_pitkern', 'portoriko', 'republika_srpska', 'saba', 'sveti_vartolomej', 'sveta_helena', 'sveti_martin', 'sent_pjer_i_mikelon', 'sakha_republika', 'sark', 'suvereni_silend', 'sikim', 'somaliland', 'j._džordž._i_sendv._ost.', 'južna_osetija', 'suv._malteški_voj._red', 'tajvan', 'tatarstan', 'ognjena_zemlja', 'tokelau', 'transnistrija', 'tristan_de_kunja', 'tur._rep._sev._kipar', 'turks_i_kaikos_ostrva', 'tuva', 'udmurtija', 'britanska_devič._ost.', 'američka_devič._ost.', 'vels', 'zapadna_sahara']);
 /////////////////////////////////////////////////////////////////
@@ -270,6 +270,9 @@ function languageHub() {
   }
   if (languageChoice.value === 'српски') {
     window.location.assign('../serbian_cyrillic/index.html');
+  }
+  if (languageChoice.value === 'espanol') {
+    window.location.assign('../spanish/index.html');
   }
 }
 

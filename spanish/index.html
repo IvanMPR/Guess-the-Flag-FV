@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <script type="module" src="controller.js"></script>
+    <title>Adivina la Bandera</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <select name="lang" id="language">
+          <option value="espanol">Español</option>
+          <option value="english">English</option>
+          <option value="srpski">Srpski latinica</option>
+          <option value="српски">Српски ћирилица</option>
+        </select>
+        <h1>Concurso Adivina la Bandera</h1>
+        <select name="choices" id="continents">
+          <option value="europe">Europa</option>
+          <option value="asia">Asia</option>
+          <option value="africa">África</option>
+          <option value="america">América del Sur y del Norte</option>
+          <option value="australia">Australia & Oceanía</option>
+          <option value="world">Mundo</option>
+          <option value="bonus">Bonus</option>
+        </select>
+      </nav>
+      <div class="flag-container">
+        <div class="flag"></div>
+      </div>
+      <button class="btn start">Inicio</button>
+      <div class="answers-grid">
+        <div class="answers" data-field="0">
+          <p class="choices" data-field="0">Australia</p>
+        </div>
+        <div class="answers" data-field="1">
+          <p class="choices" data-field="1">Serbia</p>
+        </div>
+        <div class="answers" data-field="2">
+          <p class="choices" data-field="2">Bosnia & Herzegovina</p>
+        </div>
+        <div class="answers" data-field="3">
+          <p class="choices" data-field="3">Spain</p>
+        </div>
+        <div class="score">
+          <i class="far fa-thumbs-up" id="up"></i>
+          <p id="hits">00</p>
+          <p id="misses">00</p>
+          <i class="far fa-thumbs-down" id="down"></i>
+        </div>
+      </div>
+      <div class="game-info-container">
+        <div class="game-info">
+          <p id="game-info-text">
+            Respuesta Incorrecta ! La Respuesta Correcta es Serbia !
+          </p>
+        </div>
+      </div>
+      <div class="time-buttons-container">
+        <p class="time hidden">00 : 00 : 00</p>
+        <button class="btn restart hidden">Restart Level</button>
+        <button class="btn quit hidden">Quit</button>
+      </div>
+      <div class="additional-info-container">
+        <p class="additional-info hidden">
+          Total Number of Flags in This Level is :
+          <span class="total-flags-in-level hidden">47</span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
