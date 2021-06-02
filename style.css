@@ -108,10 +108,6 @@ body::before {
   transition: box-shadow 0.15s ease-in;
 }
 
-.navbar select option {
-  font-family: 'Play', Arial, Helvetica, sans-serif;
-}
-
 /* ******************************************** */
 /* ******************************************** */
 /* Flag container and the start button */
