@@ -277,7 +277,7 @@ function languageHub() {
 }
 
 /////////////////////////////////////////////////////////////////////
-
+// Event listeners //
 window.addEventListener('load', function () {
   if (localStorage.getItem('index')) {
     continentChoice.options[localStorage.getItem('index')].selected = true;
