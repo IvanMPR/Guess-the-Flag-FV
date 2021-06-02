@@ -101,14 +101,15 @@ body::before {
   font-size: 1.6rem;
   padding: 0.5rem;
   cursor: pointer;
+  background-color: var(--fields-background-color);
 }
 .navbar select:hover {
   box-shadow: var(--box-shadows);
   transition: box-shadow 0.15s ease-in;
 }
 
-.navbar select {
-  background-color: var(--fields-background-color);
+.navbar select option {
+  font-family: 'Play', Arial, Helvetica, sans-serif;
 }
 
 /* ******************************************** */
