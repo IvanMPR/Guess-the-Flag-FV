@@ -266,7 +266,7 @@ function startGame() {
 
 function languageHub() {
   if (languageChoice.value === 'srpski') {
-    window.location.assign('serbian_latin/index.html');
+    window.location.assign('./serbian_latin/index.html');
   }
   if (languageChoice.value === 'српски') {
     window.location.assign('./serbian_cyrillic/index.html');
