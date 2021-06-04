@@ -92,11 +92,11 @@ class Continent {
         choice.classList.add('hidden');
       });
       answersGrid.style.pointerEvents = 'none';
-      gameInfo.textContent = `Congratulations ! You had ${
+      gameInfo.textContent = `¡ Enhorabuena ! Tuviste ${
         this.counterPos
-      } correct, and ${this.counterNeg} wrong answers for ${displayPastTime(
-        time.textContent
-      )} !`;
+      } respuestas correctas, y ${
+        this.counterNeg
+      } respuestas incorrectas, en ${displayPastTime(time.textContent)} !`;
     }
 
     return pickedState;

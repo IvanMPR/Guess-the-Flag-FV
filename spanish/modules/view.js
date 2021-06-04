@@ -95,17 +95,17 @@ export function displayPastTime(el) {
   const [hours, minutes, seconds] = el.split(':');
 
   if (+hours === 0 && +seconds === 0) {
-    return `${+minutes} minutes`;
+    return `${+minutes} minutos`;
   }
   if (+hours === 0) {
     return `${+minutes} ${
-      +minutes === 1 ? 'minute' : 'minutes'
-    } and ${+seconds} ${+seconds === 1 ? 'second' : 'seconds'}`;
+      +minutes === 1 ? 'minuto' : 'minutos'
+    } y ${+seconds} ${+seconds === 1 ? 'segundo' : 'segundos'}`;
   }
 
   if (+hours !== 0) {
-    return `${+hours} ${+hours === 1 ? 'hour' : 'hours'}, ${+minutes} ${
-      +minutes === 1 ? 'minute' : 'minutes'
-    } and ${+seconds} ${+seconds === 1 ? 'second' : 'seconds'}`;
+    return `${+hours} ${+hours === 1 ? 'hora' : 'horas'}, ${+minutes} ${
+      +minutes === 1 ? 'minuto' : 'minutos'
+    } y ${+seconds} ${+seconds === 1 ? 'segundo' : 'segundos'}`;
   }
 }
