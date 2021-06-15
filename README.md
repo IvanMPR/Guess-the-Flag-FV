@@ -3,8 +3,8 @@
  
 As a player, you have two select option menus. 
 With first, you can choose between English, Spanish and Serbian languages 
-(Serbian also has the choice between Cyrillic and Latin alphabet!)
-With the second option menu you can choose how the flags will be displayed: By each continent separately, or mixed up all together.
+(Serbian also has the choice between Cyrillic and Latin alphabet !)
+With the second option menu you can choose how the flags will be displayed: by each continent separately, or mixed up all together.
 Also, there is a bonus level with almost 100 flags of the territories, dependencies, disputed regions, unrecognized countries, principalities...
 and I bet that you've probably never heard for the most of them !
 
