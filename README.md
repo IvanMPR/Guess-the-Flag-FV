@@ -1,6 +1,8 @@
 # Guess the Flag (Final Version)
  Hello! This is a fun quiz app where you can learn almost every flag that is used in the world !
- 
+<br/>
+<img width="100%" src="images/screenshot.jpg"/>
+<br/>
 As a player, you have two select option menus. 
 With first, you can choose between English, Spanish and Serbian languages 
 (Serbian also has the choice between Cyrillic and Latin alphabet !)
