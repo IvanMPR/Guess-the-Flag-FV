@@ -17,7 +17,7 @@ and next flag will be displayed, untill the level is finished.
 
 # Fun fact
 I'm the creator of all of the flags used in the game !
-You can check them here : https://www.shutterstock.com/g/Ivsanmas
+You can check them <a href="https://www.shutterstock.com/g/Ivsanmas">here.<a/>
 # Tech side
 HTML, CSS and Vanilla JavaScript.
 OOP with ES6 Classes and Prototype Inheritance, ES6 Modules, DOM Manipulation, Bind method, LocalStorage, Higher Order Array methods,
