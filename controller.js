@@ -55,7 +55,7 @@ class Continent {
     this.counterNeg = 0;
     this.levelIsEnded = false;
   }
-  // Knuth-Yates shuffle function - ///// Borowed Code /////
+  // Knuth-Yates shuffle function - ///// Borrowed Code /////
   shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
@@ -124,7 +124,7 @@ class Continent {
         field.textContent = removeUnderscore(this.statesArray[i]);
         checkLength(field, 17);
 
-        // Fillig empty fields from statesArrayEmpty when statesArray.length is less than 5
+        // Filling empty fields from statesArrayEmpty when statesArray.length is less than 5
         if (this.statesArray.length < 5) {
           field.textContent = removeUnderscore(this.statesArrayEmpty[i]);
           checkLength(field, 17);
