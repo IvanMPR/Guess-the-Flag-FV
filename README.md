@@ -1,6 +1,8 @@
 # Guess the Flag (Final Version)
  Hello! This is a fun quiz app where you can learn almost every flag that is used in the world !
- 
+<br/>
+<img width="100%" src="images/screenshot.jpg"/>
+<br/>
 As a player, you have two select option menus. 
 With first, you can choose between English, Spanish and Serbian languages 
 (Serbian also has the choice between Cyrillic and Latin alphabet !)
@@ -15,7 +17,7 @@ and next flag will be displayed, untill the level is finished.
 
 # Fun fact
 I'm the creator of all of the flags used in the game !
-You can check them here : https://www.shutterstock.com/g/Ivsanmas
+You can check them <a href="https://www.shutterstock.com/g/Ivsanmas">here.<a/>
 # Tech side
 HTML, CSS and Vanilla JavaScript.
 OOP with ES6 Classes and Prototype Inheritance, ES6 Modules, DOM Manipulation, Bind method, LocalStorage, Higher Order Array methods,
