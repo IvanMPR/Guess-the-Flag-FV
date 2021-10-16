@@ -20,14 +20,16 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  font-size: 62.5%;
+}
+
 body {
   width: 100vw;
   height: 100vh;
   position: relative;
   background: url(images/background-image.jpg) no-repeat center center/cover;
   font-family: 'Play', Arial, Helvetica, sans-serif;
-  font-size: 62.5%;
   line-height: 1.2;
 }
 
