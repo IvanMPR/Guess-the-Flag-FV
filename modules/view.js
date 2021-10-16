@@ -80,8 +80,8 @@ export function hideStartBtn() {
   disableBtnWhenHidden(startBtn);
 }
 
-export function checkLength(el, treshold) {
-  if (el.textContent.length > treshold) {
+export function checkLength(el, threshold) {
+  if (el.textContent.length > threshold) {
     return (el.style.fontSize = 'var(--smaller-font-size)');
   }
 }
